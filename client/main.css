@@ -2,3 +2,24 @@
   padding-left: 50;
 
 }
+
+.navbar-form .form-control{
+  width: 65px;
+  padding: 9px
+}
+
+#timerdisplay{
+  border: 2px solid white;
+  padding: 6px;
+  height: 2em;
+  transform: translate(0%, 20%)
+}
+
+body{
+  font: 18px italic;
+}
+/*
+border-style: solid;
+border-width: 2px;
+border-color: white;
+*/

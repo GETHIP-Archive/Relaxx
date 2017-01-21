@@ -3,36 +3,62 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Relaxx</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-left">
-            <li class><a href="/home">Home</a></li>
-            <li class><a href="/music">Music</a></li>
-            <li class><a href="/videos">Videos</a></li>
-            <li class><a href="/games">Games</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-        <div class="nav navbar-header navbar-right" align="right">
-          <a class="navbar-brand" align="right">Timer</a>
-        </div>
-      </div>
-    </nav>
+  {{> navbar}}
 </body>
 
+  <template name="navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><i>Relaxx</i></a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+              <li class><a href="/home">Home</a></li>
+              <li class><a href="/music">Music</a></li>
+              <li class><a href="/videos">Videos</a></li>
+              <li class><a href="/games">Games</a></li>
+            </ul>
+            <form id="newTimer" class="navbar-form navbar-right input-group-sm">
+              <div class="form-group">
+                <input type="number" class="form-control" id="time" placeholder="30">
+                <button type="submit" class="btn btn-default">Start</button>
+              </div>
+            </form>
+            <div id="timerbox" class="nav navbar-nav navbar-right">
+              <a id="timerdisplay" class="navbar-brand"><big>{{times}}</big></a>
+            </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+  </template>
+
+
+<!--
+<script type="text/javascript">
+function countDown(secs,elem) {
+  var element = document.getElementById(elem);
+  element.innerHTML = "Please wait for "+secs+" seconds";
+  secs++;
+  var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
+
+}
+
+</script>
+<div id="status"></div>
+<script type="text/javascript">countDown(10,"status");</script>
+-->
+
 <template name="relaxx">
-<div class="container" id="newContainer">
-  <p>Hello and Welcome</p>
-</div>
+  <div class="container" id="newContainer">
+    <p>Hello and Welcome</p>
+  </div>
 </template>
 
 <template name="home">
