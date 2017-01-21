@@ -54,3 +54,53 @@
     <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
   </ul>
 </template>
+
+<template name="videos">
+  <div class="container" id="videoContainer">
+    <center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/5lsZb93rY8E?list=PL-5GinJW4bEYv1XzNs5BjWPhMQ6pv7TCS" frameborder="0" allowfullscreen></iframe>
+      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+      <span><strong>Tags: </strong></span>
+          <span class="label label-info">Relax</span>
+          <span class="label label-info">Chill</span>
+          <span class="label label-info">Peaceful</span>
+          <span class="label label-info">Lonnie Smith</span>
+    </center>
+      <hr>
+      <center>
+      <br>
+      {{#each video.comments}}
+        {{posterFullName}}: {{comment}}
+        <br>
+      {{/each}}
+    </center>
+
+    <form id="videoStats">
+      <div class="form-group">
+        <label for="videoName">Video</label>
+        <input type="text" class="form-control" id="videoName" placeholder="Relaxx-ing Video">
+      </div>
+      <div class="form-group">
+        <label for="videoLength">Length</label>
+        <input type="number" class="form-control" id="videoLength" placeholder="~10min">
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags:</label>
+        <input type="text" class="form-control" id="tags" placeholder="">
+      </div>
+    </form>
+
+    <h3>Leave a comment</h3>
+    <form id="addComment">
+      <div class="form-group">
+        <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <input type="text" class="form-control" id="comment" placeholder="Text">
+    </div>
+    <button type="submit" class="btn btn-default">Post</button>
+    </form>
+  </div>
+</template>

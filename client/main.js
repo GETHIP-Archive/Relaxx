@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
+import {Videos} from '../imports/api/videos.js';
 import './main.html';
 
 var timerid = setInterval(timer, 1000);
@@ -116,3 +117,22 @@ function displaytimerborder(){
   }
 */
 }
+
+Template.videos.events({
+  'submit #addComment'(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    const name = target.name.value;
+    const comment = target.comment.value;
+    let prof = Videos.findOne({userId: Router.current().params._id });
+    let commentToVideo = {
+      posterFullName: name,
+      comment: comment
+    };
+    Videos.update({
+      _id: prof._id},
+      {$push: {comments : commentToVideo}}
+    )
+  },
+});
