@@ -16,6 +16,30 @@ var secs = 0;
 
 var starttimevalue = 0;
 
+var name = "10/10"
+
+/*
+Template.navbar.onRendered({
+  var modal = document.getElementById('timesUpBox');
+  var testButton = document.getElementById("testingButton");
+  var closing = document.getElementsByClassName("close")[0];
+
+  testButton.onclick = function()
+  {
+  modal.style.display = "block";
+  };
+  span.onclick = function() {
+      modal.style.display = "none";
+  };
+
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  };
+});
+*/
+
 Template.navbar.events({
   'submit #newTimer'(event) {
 
@@ -61,6 +85,7 @@ function timer()
 
   if (timevalue == floor)
   {
+    window.alert("Your timer has run out");
     clearInterval(timerid);
   }
 }
@@ -80,21 +105,8 @@ function displaytimer(){
   document.getElementById('timerdisplay').innerHTML = "<big>" + ((mins < 10 ? '0' + mins : mins) + ':' + (secs < 10 ? '0' + secs : secs)) + "</big>";
 }
 //(hours != 0 ? hours + ':' : ) +
-function displaytimerborder(){
-  if (timevalue > (starttimevalue / 2) && up == false)
-  {
-    document.getElementById("timerdisplay").style.borderColor = "green white";
-  }
-  else if (timevalue > 0 && timevalue < (starttimevalue / 2) && up == false)
-  {
-    document.getElementById("timerdisplay").style.borderColor = "green white red white";
-  }
-  else if (timevalue == 0 && up == false)
-  {
-    document.getElementById("timerdisplay").style.borderColor = "red white";
-  }
 
-/*
+function displaytimerborder(){
   if(timevalue > (starttimevalue * .75) && up == false)
   {
     document.getElementById("timerdisplay").style.borderColor = "green";
@@ -107,7 +119,7 @@ function displaytimerborder(){
   {
     document.getElementById("timerdisplay").style.borderColor = "green red red green";
   }
-  else if (timevalue > 0) && timevalue <= (starttimevalue * .25) && up == false)
+  else if ((timevalue > 0) && timevalue <= (starttimevalue * .25) && up == false)
   {
     document.getElementById("timerdisplay").style.borderColor = "green red red red";
   }
@@ -115,7 +127,6 @@ function displaytimerborder(){
   {
     document.getElementById("timerdisplay").style.borderColor = "red";
   }
-*/
 }
 
 Template.videos.events({
@@ -123,16 +134,43 @@ Template.videos.events({
     event.preventDefault();
 
     const target = event.target;
+    var name = target.name.value;
+    var comment = target.comment.value;
+
+    document.getElementById("names").innerHTML = "<strong>" + name + "</strong>";
+    document.getElementById("comments").innerHTML = comment;
+
+    target.name.value = '';
+    target.comment.value = '';
+  },
+});
+
+Template.videos.helpers({
+  names: function() {
+    return name;
+  },
+  comments: function() {
+    return "<strong>" + comment + "</strong>";
+  }
+});
+
+/*
+Template.videos.events({
+  'submit #addComment'(event) {
+    event.preventDefault();
+
+    const target = event.target;
     const name = target.name.value;
     const comment = target.comment.value;
-    let prof = Videos.findOne({userId: Router.current().params._id });
+    //let prof = Videos.findOne({userId: Router.current().params._id });
     let commentToVideo = {
       posterFullName: name,
       comment: comment
     };
-    Videos.update({
-      _id: prof._id},
+    Videos.update(
+      //_id: prof._id},
       {$push: {comments : commentToVideo}}
     )
   },
 });
+*/

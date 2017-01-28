@@ -34,6 +34,17 @@
             <div id="timerbox" class="nav navbar-nav navbar-right">
               <a id="timerdisplay" class="navbar-brand"><big>{{times}}</big></a>
             </div>
+            <!--
+            <div>
+              <button id="testingButton">Open Modal</button>
+              <div id="timesUpBox" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>Your time is up. Resume working</p>
+                </div>
+              </div>
+            </div>
+            -->
           </div><!--/.nav-collapse -->
         </div>
       </nav>
@@ -46,26 +57,157 @@
 </template>
 
 <template name="home">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+  <div class="homecontainer container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Featured Music</div>
+      <div class="panel-body">
+        <iframe width="217.7" height="122.5" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
+        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+        <span class="smalllabel"><strong>Tags: </strong></span>
+          <span class="label label-info smalllabel">Coldplay</span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Featured Videos</h3>
+      </div>
+      <div class="panel-body">
+       <iframe width="217.7" height="122.5" src="https://www.youtube.com/embed/r3fE6FQT82s" frameborder="0" allowfullscreen></iframe>
+        <!--  <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>  --><br>
+        <span class="smalllabel"><strong>Tags: </strong></span>
+           <span class="label label-info smalllabel">Nature</span>
+           <span class="label label-info smalllabel">Timelapse</span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Featured Games</h3>
+      </div>
+      <div class="panel-body">
+        <embed width="196" height="145.6" base="http://external.kongregate-games.com/gamez/0015/0741/live/" src="http://external.kongregate-games.com/gamez/0015/0741/live/embeddable_150741.swf" type="application/x-shockwave-flash">
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="games">
+  <div class="container" id="gamesContainer">
+    <center>
+      <embed width="700" height="520" base="http://external.kongregate-games.com/gamez/0015/0741/live/" src="http://external.kongregate-games.com/gamez/0015/0741/live/embeddable_150741.swf" type="application/x-shockwave-flash">
+    </center>
+  </div>
+</template>
+
+<template name="music">
+  <div class="container" id="musicContainer">
+    <center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
+    <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+    <span><strong>Tags: </strong></span>
+      <span class="label label-info">Coldplay</span>
+      <span class="label label-info">Insrumental</span>
+      <span class="label label-info">~4.5 minutes</span>
+    </center>
+    <br>
+    <center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ol0dPJdzm1M?list=PL-5GinJW4bEYBetMojMNkjt88SgnEpKlm" frameborder="0" allowfullscreen></iframe>
+    <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+    <span><strong>Tags: </strong></span>
+      <span class="label label-info">Billy Joel</span>
+      <span class="label label-info">Piano</span>
+      <span class="label label-info">6 minutes</span>
+      <span class="label label-info">Soul</span>
+      <span class="label label-info">Instrumental</span>
+      <span class="label label-info">Jazzy</span>
+    </center>
+    <br>
+    <center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/Fi0xN499IXE" frameborder="0" allowfullscreen></iframe>
+      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+      <span><strong>Tags: </strong></span>
+          <span class="label label-info">Elton John</span>
+          <span class="label label-info">Insrumental</span>
+          <span class="label label-info">~4 minutes</span>
+          <span class="label label-info">Soul</span>
+    </center>
+    <br>
+    <center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lSU1eFxgr68" frameborder="0" allowfullscreen></iframe>
+    <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+    <span><strong>Tags: </strong></span>
+      <span class="label label-info">Vanilla (Band)</span>
+      <span class="label label-info">Beat</span>
+      <span class="label label-info">Full Album</span>
+      <span class="label label-info">Soul</span>
+      <span class="label label-info">Instrumental</span>
+      <span class="label label-info">Jazz</span>
+    </center>
+    <br>
+    <center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+      <span><strong>Tags: </strong></span>
+          <span class="label label-info">Mild High Club</span>
+          <span class="label label-info">Beat</span>
+          <span class="label label-info">Peaceful</span>
+          <span class="label label-info">Scenic</span>
+          <span class="label label-info">Sunsets</span>
+          <span class="label label-info">Nature</span>
+    </center>
+    <br>
+    <center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+      <span><strong>Tags: </strong></span>
+          <span class="label label-info">Mild High Club</span>
+          <span class="label label-info">Electronic Samples</span>
+          <span class="label label-info">Beat</span>
+          <span class="label label-info">Full Album</span>
+    </center>
+    <br>
+  </div>
 </template>
 
 <template name="videos">
   <div class="container" id="videoContainer">
     <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/5lsZb93rY8E?list=PL-5GinJW4bEYv1XzNs5BjWPhMQ6pv7TCS" frameborder="0" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/m_5g_D_iP2s" frameborder="0" allowfullscreen></iframe>
       <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
       <span><strong>Tags: </strong></span>
           <span class="label label-info">Relax</span>
           <span class="label label-info">Chill</span>
           <span class="label label-info">Peaceful</span>
-          <span class="label label-info">Lonnie Smith</span>
+          <span class="label label-info">Scenic</span>
+          <span class="label label-info">Sunsets</span>
+          <span class="label label-info">Nature</span>
     </center>
+    <br>
+    <center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/8gD_9WPPFb4" frameborder="0" allowfullscreen></iframe>
+      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+      <span><strong>Tags: </strong></span>
+          <span class="label label-info">Relax</span>
+          <span class="label label-info">Chill</span>
+          <span class="label label-info">Peaceful</span>
+          <span class="label label-info">Clouds</span>
+          <span class="label label-info">Sunsets</span>
+          <span class="label label-info">Nature</span>
+    </center>
+    <br>
+    <center>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/OX5QXc7FcP8" frameborder="0" allowfullscreen></iframe>
+      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+      <span><strong>Tags: </strong></span>
+          <span class="label label-info">Relax</span>
+          <span class="label label-info">Chill</span>
+          <span class="label label-info">Peaceful</span>
+          <span class="label label-info">Ocean</span>
+          <span class="label label-info">Waves</span>
+          <span class="label label-info">Nature</span>
+    </center>
+    <br>
     <center>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/5lsZb93rY8E?list=PL-5GinJW4bEYv1XzNs5BjWPhMQ6pv7TCS" frameborder="0" allowfullscreen></iframe>
       <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
@@ -75,10 +217,51 @@
           <span class="label label-info">Peaceful</span>
           <span class="label label-info">Lonnie Smith</span>
     </center>
+    <br>
+    <center>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/r3fE6FQT82s" frameborder="0" allowfullscreen></iframe>
+     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+     <span><strong>Tags: </strong></span>
+         <span class="label label-info">Nature</span>
+         <span class="label label-info">Timelapse</span>
+         <span class="label label-info">Peaceful</span>
+         <span class="label label-info">Piano</span>
+   </center>
+   <br>
+   <center>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/bdnHKdb-Oss" frameborder="0" allowfullscreen></iframe>
+     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+     <span><strong>Tags: </strong></span>
+         <span class="label label-info">Aquarium</span>
+         <span class="label label-info">Marine Life</span>
+         <span class="label label-info">Ocean</span>
+         <span class="label label-info">Underwater</span>
+   </center>
+   <br>
+   <center>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/VlucWfTUo1A?list=PLAEQD0ULngi67rwmhrkNjMZKvyCReqDV4" frameborder="0" allowfullscreen></iframe>
+     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+     <span><strong>Tags: </strong></span>
+         <span class="label label-info">Bob Ross</span>
+         <span class="label label-info">Chill</span>
+         <span class="label label-info">Joy of Painting</span>
+   </center>
+   <br>
+   <center>
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/Urc9lKFe-m8" frameborder="0" allowfullscreen></iframe>
+     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+     <span><strong>Tags: </strong></span>
+         <span class="label label-info">Bob Ross</span>
+         <span class="label label-info">Chill</span>
+         <span class="label label-info">Peaceful</span>
+         <span class="label label-info">Joy of Painting</span>
+   </center>
+   <br>
+<!--
       <hr>
       <center>
       <br>
-      {{#each video.comments}}
+      {{#each videos.comments}}
         {{posterFullName}}: {{comment}}
         <br>
       {{/each}}
@@ -98,6 +281,11 @@
         <input type="text" class="form-control" id="tags" placeholder="">
       </div>
     </form>
+-->
+
+    <h3><strong>Comments:</strong></h3>
+    <p id="names"><strong>{{names}}</strong></p>
+    <p id="comments">{{comments}}</p>
 
     <h3>Leave a comment</h3>
     <form id="addComment">
