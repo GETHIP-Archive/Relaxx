@@ -1,9 +1,12 @@
 .container-fluid{
+  font-family: 'Oleo Script Swash Caps', cursive;
   padding-left: 50;
 
 }
 
 .navbar-form .form-control{
+  font-family: 'Oleo Script Swash Caps', cursive;
+  font: 30px;
   width: 65px;
   padding: 9px
 }
@@ -16,33 +19,46 @@
 }
 
 body{
+  font-family: 'Oleo Script Swash Caps', cursive;
   font: 18px italic;
   background-color: #D3F5FF
 }
 
 .homecontainer{
+  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 100px;
 }
 
 .smalllabel{
+  font-family: 'Oleo Script Swash Caps', cursive;
   font-size: 65%;
 }
 
 .navbar{
+  font-family: 'Oleo Script Swash Caps', cursive;
   background-color: #040E2B;
 }
 
 #videoContainer{
+  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 75px;
   margin-bottom: 50px;
 }
 
 #musicContainer{
+  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 75px;
   margin-bottom: 50px;
 }
 
 #gamesContainer{
+  font-family: 'Oleo Script Swash Caps', cursive;
+  margin-top: 75px;
+  margin-bottom: 50px;
+}
+
+#SoundCloudContainer{
+  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 75px;
   margin-bottom: 50px;
 }
