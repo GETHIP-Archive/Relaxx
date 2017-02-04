@@ -61,7 +61,9 @@
 <template name="home">
   <div class="homecontainer container">
     <div class="panel panel-default">
-      <div class="panel-heading">Featured Music</div>
+      <div class="panel-heading">
+        <h3 class="panel-title">Featured Music</h3>
+      </div>
       <div class="panel-body">
         <iframe width="217.7" height="122.5" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
@@ -96,14 +98,35 @@
 
 <template name="games">
   <div class="container" id="gamesContainer">
+    <div class="panel panel-default">
+      <div class="panel-body">
     <center>
       <embed width="700" height="520" base="http://external.kongregate-games.com/gamez/0015/0741/live/" src="http://external.kongregate-games.com/gamez/0015/0741/live/embeddable_150741.swf" type="application/x-shockwave-flash">
     </center>
+    <h3><strong>Comments:</strong></h3>
+    <p id="names"><strong>{{names}}</strong></p>
+    <p id="comments">{{comments}}</p>
+    <h3>Leave a comment</h3>
+    <form id="addComment">
+      <div class="form-group">
+        <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <input type="text" class="form-control" id="comment" placeholder="Comment">
+    </div>
+    <button type="submit" class="btn btn-default">Post</button>
+    </form>
   </div>
+  </div>
+</div>
 </template>
 
 <template name="music">
   <div class="container" id="musicContainer">
+    <div class="panel panel-default">
+      <div class="panel-body">
     <center>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
@@ -169,105 +192,148 @@
           <span class="label label-info">Full Album</span>
     </center>
     <br>
+  <h3><strong>Comments:</strong></h3>
+  <p id="names"><strong>{{names}}</strong></p>
+  <p id="comments">{{comments}}</p>
+
+  <h3>Leave a comment</h3>
+  <form id="addComment">
+    <div class="form-group">
+      <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Name">
   </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <input type="text" class="form-control" id="comment" placeholder="Comment">
+  </div>
+  <button type="submit" class="btn btn-default">Post</button>
+  </form>
+</div>
+</div>
+</div>
 </template>
+
 <template name="SoundCloud">
   <div class="container" id="SoundCloudContainer">
+    <div class="panel panel-default">
+      <div class="panel-body">
     <center>
   <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-
     </center>
     <br>
+    <h3><strong>Comments:</strong></h3>
+    <p id="names"><strong>{{names}}</strong></p>
+    <p id="comments">{{comments}}</p>
 
+    <h3>Leave a comment</h3>
+    <form id="addComment">
+      <div class="form-group">
+        <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <input type="text" class="form-control" id="comment" placeholder="Comment">
+    </div>
+    <button type="submit" class="btn btn-default">Post</button>
+    </form>
+  </div>
+</div>
   </div>
 </template>
+
 <template name="videos">
   <div class="container" id="videoContainer">
-    <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/m_5g_D_iP2s" frameborder="0" allowfullscreen></iframe>
-      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-      <span><strong>Tags: </strong></span>
-          <span class="label label-info">Relax</span>
-          <span class="label label-info">Chill</span>
-          <span class="label label-info">Peaceful</span>
-          <span class="label label-info">Scenic</span>
-          <span class="label label-info">Sunsets</span>
-          <span class="label label-info">Nature</span>
-    </center>
-    <br>
-    <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/8gD_9WPPFb4" frameborder="0" allowfullscreen></iframe>
-      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-      <span><strong>Tags: </strong></span>
-          <span class="label label-info">Relax</span>
-          <span class="label label-info">Chill</span>
-          <span class="label label-info">Peaceful</span>
-          <span class="label label-info">Clouds</span>
-          <span class="label label-info">Sunsets</span>
-          <span class="label label-info">Nature</span>
-    </center>
-    <br>
-    <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/OX5QXc7FcP8" frameborder="0" allowfullscreen></iframe>
-      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-      <span><strong>Tags: </strong></span>
-          <span class="label label-info">Relax</span>
-          <span class="label label-info">Chill</span>
-          <span class="label label-info">Peaceful</span>
-          <span class="label label-info">Ocean</span>
-          <span class="label label-info">Waves</span>
-          <span class="label label-info">Nature</span>
-    </center>
-    <br>
-    <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/5lsZb93rY8E?list=PL-5GinJW4bEYv1XzNs5BjWPhMQ6pv7TCS" frameborder="0" allowfullscreen></iframe>
-      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-      <span><strong>Tags: </strong></span>
-          <span class="label label-info">Relax</span>
-          <span class="label label-info">Chill</span>
-          <span class="label label-info">Peaceful</span>
-          <span class="label label-info">Lonnie Smith</span>
-    </center>
-    <br>
-    <center>
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/r3fE6FQT82s" frameborder="0" allowfullscreen></iframe>
-     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-     <span><strong>Tags: </strong></span>
-         <span class="label label-info">Nature</span>
-         <span class="label label-info">Timelapse</span>
-         <span class="label label-info">Peaceful</span>
-         <span class="label label-info">Piano</span>
-   </center>
-   <br>
-   <center>
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/bdnHKdb-Oss" frameborder="0" allowfullscreen></iframe>
-     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-     <span><strong>Tags: </strong></span>
-         <span class="label label-info">Aquarium</span>
-         <span class="label label-info">Marine Life</span>
-         <span class="label label-info">Ocean</span>
-         <span class="label label-info">Underwater</span>
-   </center>
-   <br>
-   <center>
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/VlucWfTUo1A?list=PLAEQD0ULngi67rwmhrkNjMZKvyCReqDV4" frameborder="0" allowfullscreen></iframe>
-     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-     <span><strong>Tags: </strong></span>
-         <span class="label label-info">Bob Ross</span>
-         <span class="label label-info">Chill</span>
-         <span class="label label-info">Joy of Painting</span>
-   </center>
-   <br>
-   <center>
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/Urc9lKFe-m8" frameborder="0" allowfullscreen></iframe>
-     <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-     <span><strong>Tags: </strong></span>
-         <span class="label label-info">Bob Ross</span>
-         <span class="label label-info">Chill</span>
-         <span class="label label-info">Peaceful</span>
-         <span class="label label-info">Joy of Painting</span>
-   </center>
-   <br>
+    <div class="panel panel-default">
+      <div class="panel-body">
+      </div>
+      <div class="panel-body">
+        <center>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/m_5g_D_iP2s" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+              <span class="label label-info">Relax</span>
+              <span class="label label-info">Chill</span>
+              <span class="label label-info">Peaceful</span>
+              <span class="label label-info">Scenic</span>
+              <span class="label label-info">Sunsets</span>
+              <span class="label label-info">Nature</span>
+        </center>
+        <br>
+        <center>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/8gD_9WPPFb4" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+              <span class="label label-info">Relax</span>
+              <span class="label label-info">Chill</span>
+              <span class="label label-info">Peaceful</span>
+              <span class="label label-info">Clouds</span>
+              <span class="label label-info">Sunsets</span>
+              <span class="label label-info">Nature</span>
+        </center>
+        <br>
+        <center>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/OX5QXc7FcP8" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+              <span class="label label-info">Relax</span>
+              <span class="label label-info">Chill</span>
+              <span class="label label-info">Peaceful</span>
+              <span class="label label-info">Ocean</span>
+              <span class="label label-info">Waves</span>
+              <span class="label label-info">Nature</span>
+        </center>
+        <br>
+        <center>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/5lsZb93rY8E?list=PL-5GinJW4bEYv1XzNs5BjWPhMQ6pv7TCS" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+              <span class="label label-info">Relax</span>
+              <span class="label label-info">Chill</span>
+              <span class="label label-info">Peaceful</span>
+              <span class="label label-info">Lonnie Smith</span>
+        </center>
+        <br>
+        <center>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/r3fE6FQT82s" frameborder="0" allowfullscreen></iframe>
+         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+         <span><strong>Tags: </strong></span>
+             <span class="label label-info">Nature</span>
+             <span class="label label-info">Timelapse</span>
+             <span class="label label-info">Peaceful</span>
+             <span class="label label-info">Piano</span>
+       </center>
+       <br>
+       <center>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/bdnHKdb-Oss" frameborder="0" allowfullscreen></iframe>
+         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+         <span><strong>Tags: </strong></span>
+             <span class="label label-info">Aquarium</span>
+             <span class="label label-info">Marine Life</span>
+             <span class="label label-info">Ocean</span>
+             <span class="label label-info">Underwater</span>
+       </center>
+       <br>
+       <center>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/VlucWfTUo1A?list=PLAEQD0ULngi67rwmhrkNjMZKvyCReqDV4" frameborder="0" allowfullscreen></iframe>
+         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+         <span><strong>Tags: </strong></span>
+             <span class="label label-info">Bob Ross</span>
+             <span class="label label-info">Chill</span>
+             <span class="label label-info">Joy of Painting</span>
+       </center>
+       <br>
+       <center>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/Urc9lKFe-m8" frameborder="0" allowfullscreen></iframe>
+         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+         <span><strong>Tags: </strong></span>
+             <span class="label label-info">Bob Ross</span>
+             <span class="label label-info">Chill</span>
+             <span class="label label-info">Peaceful</span>
+             <span class="label label-info">Joy of Painting</span>
+       </center>
+       <br>
+
 <!--
       <hr>
       <center>
@@ -306,9 +372,11 @@
     </div>
     <div class="form-group">
       <label for="comment">Comment</label>
-      <input type="text" class="form-control" id="comment" placeholder="Text">
+      <input type="text" class="form-control" id="comment" placeholder="Comment">
     </div>
     <button type="submit" class="btn btn-default">Post</button>
     </form>
   </div>
+</div>
+</div>
 </template>
