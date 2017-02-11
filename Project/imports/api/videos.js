@@ -20,11 +20,6 @@ Videos.schema = new SimpleSchema({
     type: String,
     optional: true
   },
-  videobio:
-  {
-    type: String,
-    optional: true
-  },
   videoalltags:
   {
     type: [String],

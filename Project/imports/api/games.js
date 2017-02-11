@@ -17,13 +17,13 @@ Games.schema = new SimpleSchema({
   },
   gameName:
   {
-    type: String,
-    optional: true
+    type: String
   },
-  gamebio:
+  gamePic:
   {
     type: String,
     optional: true
+    //defaultValue:
   },
   gamealltags:
   {

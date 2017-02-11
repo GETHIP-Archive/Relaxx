@@ -1,4 +1,5 @@
 import {Videos} from '../imports/api/videos.js';
+import {Games} from '../imports/api/games.js';
 
 Router.route('/login', function () {
   this.render("login");

@@ -255,63 +255,122 @@ function displaytimerborder(){
   }
 }
 
+Template.games.events({
+  'submit #addGame'(event) {
+    event.preventDefault();
+    var target = event.target;
+    //const videoName = event.videoName.value;
+    var gameLink = target.gameLink.value;
+    var gameName = target.gameName.value;
+    var gamePic = target.gamePic.value;
+    var gametags = target.gametags.value;
+    var gamealltags = gametags.replace(/ /g,"");
+    gamealltags = gamealltags.split(",");
+    console.log(gamealltags);
+    // Insert a video into the collection
+    Games.insert({
+      gameLink: gameLink,
+      gameName: gameName,
+      gamePic: gamePic,
+      gamealltags: gamealltags
+    });
+
+    target.gameLink.value  = '';
+    target.gameName.value  = '';
+    target.gamePic.value  = '';
+    target.gametags.value  = '';
+  },
+
+  'submit #gameaddComment'(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    var gamename = target.gamename.value;
+    var gamecomment = target.gamecomment.value;
+
+    document.getElementById("gamenames").innerHTML = "<strong>" + gamename + "</strong>";
+    document.getElementById("gamecomments").innerHTML = gamecomment;
+
+    target.gamename.value = '';
+    target.gamecomment.value = '';
+  },
+});
+
+Template.games.helpers({
+  gamesnames: function() {
+    return gamename;
+  },
+  gamescomments: function() {
+    return "<strong>" + gamecomment + "</strong>";
+  },
+  games: function() {
+    return Games.find();
+  },
+  gamessearchtags: function(searchalltags)
+  {
+    result = false;
+    for(n in searchalltags)
+    {
+      if(searchalltags[n] === gamesearchingtag)
+      {
+        result = true;
+      }
+    }
+    return result;
+  }
+});
+
 Template.videos.events({
   'submit #addVideo'(event) {
     event.preventDefault();
     var target = event.target;
     //const videoName = event.videoName.value;
     var videoLink = target.videoLink.value;
-    var tags = target.tags.value;
-    var alltags = tags.replace(/ /g,"");
-    alltags = alltags.split(",");
-    console.log(alltags);
+    var videotags = target.videotags.value;
+    var videoalltags = videotags.replace(/ /g,"");
+    videoalltags = videoalltags.split(",");
+    console.log(videoalltags);
     // Insert a video into the collection
     Videos.insert({
       videoLink: videoLink,
-      alltags: alltags
+      videoalltags: videoalltags
     });
 
     target.videoLink.value  = '';
-    target.tags.value  = '';
+    target.videotags.value  = '';
   },
 
   'submit #addComment'(event) {
     event.preventDefault();
 
     const target = event.target;
-    var name = target.name.value;
-    var comment = target.comment.value;
+    var videoname = target.videoname.value;
+    var videocomment = target.videocomment.value;
 
-    document.getElementById("names").innerHTML = "<strong>" + name + "</strong>";
-    document.getElementById("comments").innerHTML = comment;
+    document.getElementById("videonames").innerHTML = "<strong>" + videoname + "</strong>";
+    document.getElementById("videocomments").innerHTML = videocomment;
 
-    target.name.value = '';
-    target.comment.value = '';
+    target.videoname.value = '';
+    target.videocomment.value = '';
   },
 });
 
 Template.videos.helpers({
-  names: function() {
-    return name;
+  videonames: function() {
+    return videoname;
   },
-  comments: function() {
-    return "<strong>" + comment + "</strong>";
+  videocomments: function() {
+    return "<strong>" + videocomment + "</strong>";
   },
   videos: function() {
     return Videos.find();
   },
-  /*
-  video() {
-    let vid = Videos.findOne({userId: Router.current().params._id });
-    return vid;
-  }
-  */
-  searchtags: function(searchalltags)
+  videosearchtags: function(searchalltags)
   {
     result = false;
     for(n in searchalltags)
     {
-      if(searchalltags[n] === "Nature")
+      if(searchalltags[n] === videosearchingtag)
       {
         result = true;
       }

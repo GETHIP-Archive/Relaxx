@@ -1,12 +1,9 @@
 .container-fluid{
-  font-family: 'Oleo Script Swash Caps', cursive;
   padding-left: 50;
 
 }
 
 .navbar-form .form-control{
-  font-family: 'Oleo Script Swash Caps', cursive;
-  font: 30px;
   width: 65px;
   padding: 9px
 }
@@ -19,13 +16,11 @@
 }
 
 body{
-  font-family: 'Oleo Script Swash Caps', cursive;
   font: 18px italic;
   background-color: #D3F5FF
 }
 
 .homecontainer{
-  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 100px;
 }
 
@@ -62,39 +57,58 @@ body{
 }
 
 .inline-p{
-  display:inline;
+  display: inline;
+}
+
+.inline-pp{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.gamepic{
+  border: 2px solid black;
 }
 
 .smalllabel{
-  font-family: 'Oleo Script Swash Caps', cursive;
   font-size: 65%;
 }
 
 .navbar{
-  font-family: 'Oleo Script Swash Caps', cursive;
   background-color: #040E2B;
 }
 
-#videoContainer{
+#relaxxtitle{
   font-family: 'Oleo Script Swash Caps', cursive;
+  font-size: 20px;
+  color: white;
+  text-shadow:
+      2px 2px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+      1px 1px 0 #000;
+  background: url(/images/LogoBackground.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+#videoContainer{
   margin-top: 75px;
   margin-bottom: 50px;
 }
 
 #musicContainer{
-  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 75px;
   margin-bottom: 50px;
 }
 
 #gamesContainer{
-  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 75px;
   margin-bottom: 50px;
 }
 
 #SoundCloudContainer{
-  font-family: 'Oleo Script Swash Caps', cursive;
   margin-top: 75px;
   margin-bottom: 50px;
 }
