@@ -1,5 +1,17 @@
 import {Videos} from '../imports/api/videos.js';
 
+Router.route('/login', function () {
+  this.render("login");
+});
+
+Router.route('/register', function () {
+  this.render("register");
+});
+
+Router.route('/profile', function () {
+  this.render("profile");
+});
+
 Router.route('/music', function () {
   this.render("music");
 });

@@ -25,3 +25,8 @@ aldeed:simple-schema
 twbs:bootstrap
 aldeed:collection2
 flyandi:reactive-countdown
+
+accounts-ui
+accounts-password
+
+practicalmeteor:mocha

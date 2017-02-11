@@ -24,6 +24,14 @@
               <li class><a href="/music">Music</a></li>
               <li class><a href="/videos">Videos</a></li>
               <li class><a href="/games">Games</a></li>
+              <li class>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              {{#if currentUser}}
+                <li class id="currentUsername"><a href="/profile">{{currentusername}}</a></li>
+                <li><a href="#" class="logout">Logout</a></li>
+              {{else}}
+                <!--  <li class><a href="/register">Register</a></li>  -->
+                <li class><a href="/login">Login</a></li>
+              {{/if}}
             </ul>
             <form id="newTimer" class="navbar-form navbar-right input-group-sm">
               <div class="form-group">
@@ -52,7 +60,55 @@
 
 <template name="relaxx">
   <div class="container" id="newContainer">
-    <p>Hello and Welcome</p>
+    <!--
+    <ul>
+      <li><a href="{{pathFor route='home'}}">Home</a></li>
+      {{#if currentUser}}
+        <li><a href="#" class="logout">Logout</a></li>
+      {{else}}
+        <li><a href="{{pathFor route='register'}}">Register</a></li>
+        <li><a href="{{pathFor route='login'}}">Login</a></li>
+      {{/if}}
+    </ul>
+    -->
+  </div>
+</template>
+
+<template name="register">
+  <div class="container" id="registerContainer">
+    <h2><i>Register</i></h2>
+    <form class="register">
+      <p>Username: <input type="username" name="username"></p>
+      <p>Password: &nbsp;<input type="password" name="password"></p>
+      <p class="inline-p"><input type="submit" value="Register">&nbsp;&nbsp;<p class="inline-p" id="errorfound"></p></p>
+      <a href="/login">Login</a>
+    </form>
+  </div>
+</template>
+
+<template name="login">
+  <div class="container" id="loginContainer">
+    <h2><i>Login</i></h2>
+    <form class="login">
+      <p class="inline-p">Username: <input type="username" name="username">&nbsp;&nbsp;<p class="inline-p" id="errorusername"></p></p>
+      <p class="inline-p">Password: &nbsp;<input type="password" name="password">&nbsp;&nbsp;<p class="inline-p" id="errorpassword"></p></p>
+      <p class="inline-p"><input type="submit" value="Login">&nbsp;&nbsp;<p class="inline-p" id="errorfound"></p></p>
+      <a href="/register">Register</a>
+    </form>
+  </div>
+</template>
+
+<template name="profile">
+  <div class="container" id="profileContainer">
+    {{#if currentUser}}
+      <center>
+        <h2 id="userwelcomemessage">{{welcomemessage}}</h2>
+      </center>
+    {{else}}
+      <center>
+        <a style="font-size: 40px" href="/login"><i>Login</i></a>
+      </center>
+    {{/if}}
   </div>
 </template>
 
@@ -281,7 +337,35 @@
         <input type="text" class="form-control" id="tags" placeholder="">
       </div>
     </form>
+
+
+    <span class="label label-info">{{this.alltags}}</span>
 -->
+    {{ #each videos }}
+      {{ #if searchtags this.alltags }}
+        <center>
+          <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+            {{ #each tag in this.alltags }}
+              <span class="label label-info">{{tag}}</span>
+            {{ /each }}
+        </center>
+        <br>
+      {{ /if }}
+    {{ /each }}
+
+    <form id="addVideo">
+    <div class="form-group">
+      <label for="name">Link (embedded)</label>
+      <input type="text" class="form-control" id="videoLink" placeholder="https://www.youtube.com/embed/m_5g_D_iP2s">
+    </div>
+    <div class="form-group">
+      <label for="comment">Tags (Seperated by spaces)</label>
+      <input type="text" class="form-control" id="tags" placeholder="Relaxx, Chill, Scenic, Nature">
+    </div>
+    <button type="submit" class="btn btn-default">Post Video</button>
+    </form>
 
     <h3><strong>Comments:</strong></h3>
     <p id="names"><strong>{{names}}</strong></p>

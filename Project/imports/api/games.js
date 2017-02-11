@@ -1,6 +1,6 @@
-export const Videos = new Mongo.Collection('videos');
+export const Games = new Mongo.Collection('games');
 
-Video_Comment_Schema = new SimpleSchema({
+Game_Comment_Schema = new SimpleSchema({
   posterFullName: {
     type: String
   },
@@ -10,32 +10,32 @@ Video_Comment_Schema = new SimpleSchema({
   }
 });
 
-Videos.schema = new SimpleSchema({
-  videoLink:
+Games.schema = new SimpleSchema({
+  gameLink:
   {
     type: String
   },
-  videoName:
+  gameName:
   {
     type: String,
     optional: true
   },
-  videobio:
+  gamebio:
   {
     type: String,
     optional: true
   },
-  videoalltags:
+  gamealltags:
   {
     type: [String],
     defaultValue: [],
     optional: true
   },
-  videocomments:
+  gamecomments:
   {
-    type: [Video_Comment_Schema],
+    type: [Game_Comment_Schema],
     optional: true
   }
 });
 
-Videos.attachSchema(Videos.schema);
+Games.attachSchema(Games.schema);
