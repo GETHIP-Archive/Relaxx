@@ -25,14 +25,6 @@
               <li class><a href="/music">Music</a></li>
               <li class><a href="/videos">Videos</a></li>
               <li class><a href="/games">Games</a></li>
-              <li class>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-              {{#if currentUser}}
-                <li class id="currentUsername"><a href="/profile">{{currentusername}}</a></li>
-                <li><a href="#" class="logout">Logout</a></li>
-              {{else}}
-                <!--  <li class><a href="/register">Register</a></li>  -->
-                <li class><a href="/login">Login</a></li>
-              {{/if}}
             </ul>
             <form id="newTimer" class="navbar-form navbar-right input-group-sm">
               <div class="form-group">
@@ -41,6 +33,14 @@
               </div>
             </form>
             <div id="timerbox" class="nav navbar-nav navbar-right">
+              {{#if currentUser}}
+                <li class id="currentUsername"><a href="/profile">{{currentusername}}</a></li>
+                <li><a href="#" class="logout">Logout</a></li>
+              {{else}}
+                <!--  <li class><a href="/register">Register</a></li>  -->
+                <li class><a href="/login">Login</a></li>
+              {{/if}}
+              <li class>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
               <a id="timerdisplay" class="navbar-brand"><big>{{times}}</big></a>
             </div>
             <!--
@@ -153,18 +153,37 @@
   </div>
 </template>
 
+<template name ="eachgame">
+  <div class="container" id="eachgamecontainer">
+    <center>
+      <h3>{{eachgame.gameName}}</h3>
+      {{{eachgame.gameLink}}}
+    </center>
+    <center>
+      <span style="font-size: 25px"><strong>Tags: </strong></span>
+        {{ #each tag in eachgame.gamealltags }}
+          <span class="label label-info" style="font-size: 18px">{{tag}}</span>
+        {{ /each }}
+    </center>
+  </div>
+</template>
+
 <template name="games">
   <div class="container" id="gamesContainer">
     <div class="panel panel-default">
       <div class="panel-body">
 
     {{ #each games }}
-      <img src="{{this.gamePic}}" name="gamepic" width="187.5" height="150" class="gamepic">
+      <a href="game/{{this._id}}">
+        <img src="{{this.gamePic}}" name="gamepic" width="187.5" height="150" class="gamepic">
+      </a>
       <div class="inline-pp">
-        <h3 style="margin-top: 0px">{{this.gameName}}</h3>
-        <span style="font-size: 16px"><strong>Tags: </strong></span>
+        <a href="game/{{this._id}}">
+          <h3 style="margin-top: 0px">{{this.gameName}}</h3>
+        </a>
+        <span style="font-size: 20px"><strong>Tags: </strong></span>
           {{ #each tag in this.gamealltags }}
-            <span class="label label-info" style="font-size: 13px">{{tag}}</span>
+            <span class="label label-info" style="font-size: 15px">{{tag}}</span>
           {{ /each }}
       </div>
       <br>
