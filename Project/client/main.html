@@ -23,7 +23,6 @@
             <ul class="nav navbar-nav navbar-left">
               <li class><a href="/home">Home</a></li>
               <li class><a href="/music">Music</a></li>
-              <li class><a href="/SoundCloud">SoundCloud</a></li>
               <li class><a href="/videos">Videos</a></li>
               <li class><a href="/games">Games</a></li>
             </ul>
@@ -232,123 +231,90 @@
 
 <template name="music">
   <div class="container" id="musicContainer">
-    <div class="panel panel-default">
-      <div class="panel-body">
-    <center>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
-    <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-    <span><strong>Tags: </strong></span>
-      <span class="label label-info">Coldplay</span>
-      <span class="label label-info">Insrumental</span>
-      <span class="label label-info">~4.5 minutes</span>
-    </center>
-    <br>
-    <center>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ol0dPJdzm1M?list=PL-5GinJW4bEYBetMojMNkjt88SgnEpKlm" frameborder="0" allowfullscreen></iframe>
-    <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-    <span><strong>Tags: </strong></span>
-      <span class="label label-info">Billy Joel</span>
-      <span class="label label-info">Piano</span>
-      <span class="label label-info">6 minutes</span>
-      <span class="label label-info">Soul</span>
-      <span class="label label-info">Instrumental</span>
-      <span class="label label-info">Jazzy</span>
-    </center>
-    <br>
-    <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/Fi0xN499IXE" frameborder="0" allowfullscreen></iframe>
-      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-      <span><strong>Tags: </strong></span>
-          <span class="label label-info">Elton John</span>
+    <div class= "row">
+      <div class="col-sm-6">
+
+      <center>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
+        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+        <span><strong>Tags: </strong></span>
+          <span class="label label-info">Coldplay</span>
           <span class="label label-info">Insrumental</span>
-          <span class="label label-info">~4 minutes</span>
+          <span class="label label-info">~4.5 minutes</span>
+
+        <br>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ol0dPJdzm1M?list=PL-5GinJW4bEYBetMojMNkjt88SgnEpKlm" frameborder="0" allowfullscreen></iframe>
+        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+        <span><strong>Tags: </strong></span>
+          <span class="label label-info">Billy Joel</span>
+          <span class="label label-info">Piano</span>
+          <span class="label label-info">6 minutes</span>
           <span class="label label-info">Soul</span>
-    </center>
-    <br>
-    <center>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/lSU1eFxgr68" frameborder="0" allowfullscreen></iframe>
-    <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-    <span><strong>Tags: </strong></span>
-      <span class="label label-info">Vanilla (Band)</span>
-      <span class="label label-info">Beat</span>
-      <span class="label label-info">Full Album</span>
-      <span class="label label-info">Soul</span>
-      <span class="label label-info">Instrumental</span>
-      <span class="label label-info">Jazz</span>
-    </center>
-    <br>
-    <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
-      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-      <span><strong>Tags: </strong></span>
-          <span class="label label-info">Mild High Club</span>
-          <span class="label label-info">Beat</span>
-          <span class="label label-info">Peaceful</span>
-          <span class="label label-info">Scenic</span>
-          <span class="label label-info">Sunsets</span>
-          <span class="label label-info">Nature</span>
-    </center>
-    <br>
-    <center>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
-      <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-      <span><strong>Tags: </strong></span>
-          <span class="label label-info">Mild High Club</span>
-          <span class="label label-info">Electronic Samples</span>
+          <span class="label label-info">Instrumental</span>
+          <span class="label label-info">Jazzy</span>
+
+        <br>
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Fi0xN499IXE" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+              <span class="label label-info">Elton John</span>
+              <span class="label label-info">Insrumental</span>
+              <span class="label label-info">~4 minutes</span>
+              <span class="label label-info">Soul</span>
+
+        <br>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/lSU1eFxgr68" frameborder="0" allowfullscreen></iframe>
+        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+        <span><strong>Tags: </strong></span>
+          <span class="label label-info">Vanilla (Band)</span>
           <span class="label label-info">Beat</span>
           <span class="label label-info">Full Album</span>
-    </center>
-    <br>
-  <h3><strong>Comments:</strong></h3>
-  <p id="names"><strong>{{names}}</strong></p>
-  <p id="comments">{{comments}}</p>
+          <span class="label label-info">Soul</span>
+          <span class="label label-info">Instrumental</span>
+          <span class="label label-info">Jazz</span>
 
-  <h3>Leave a comment</h3>
-  <form id="addComment">
-    <div class="form-group">
-      <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name">
+        <br>
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+              <span class="label label-info">Mild High Club</span>
+              <span class="label label-info">Beat</span>
+              <span class="label label-info">Peaceful</span>
+              <span class="label label-info">Scenic</span>
+              <span class="label label-info">Sunsets</span>
+              <span class="label label-info">Nature</span>
+
+        <br>
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+          <span><strong>Tags: </strong></span>
+              <span class="label label-info">Mild High Club</span>
+              <span class="label label-info">Electronic Samples</span>
+              <span class="label label-info">Beat</span>
+              <span class="label label-info">Full Album</span>
+
+      <br>
+      </center>
+    </div>
+  <div class="col-sm-6">
+    <div  class="container" id="SoundCloudContainer">
+
+
+      <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+        <br>
+      <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/245009995&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+
+    </div>
   </div>
-  <div class="form-group">
-    <label for="comment">Comment</label>
-    <input type="text" class="form-control" id="comment" placeholder="Comment">
   </div>
-  <button type="submit" class="btn btn-default">Post</button>
-  </form>
-</div>
-</div>
 </div>
 </template>
-
-<template name="SoundCloud">
-  <div class="container" id="SoundCloudContainer">
-    <div class="panel panel-default">
-      <div class="panel-body">
-    <center>
-  <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-    </center>
-    <br>
-    <h3><strong>Comments:</strong></h3>
-    <p id="names"><strong>{{names}}</strong></p>
-    <p id="comments">{{comments}}</p>
-
-    <h3>Leave a comment</h3>
-    <form id="addComment">
-      <div class="form-group">
-        <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Name">
-    </div>
-    <div class="form-group">
-      <label for="comment">Comment</label>
-      <input type="text" class="form-control" id="comment" placeholder="Comment">
-    </div>
-    <button type="submit" class="btn btn-default">Post</button>
-    </form>
-  </div>
-</div>
-  </div>
-</template>
-
 <template name="videos">
   <div class="container" id="videoContainer">
     <div class="panel panel-default">

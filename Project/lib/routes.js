@@ -26,9 +26,6 @@ Router.route('/music', function () {
   this.render("music");
 });
 
-Router.route('/SoundCloud', function () {
-  this.render("SoundCloud");
-});
 
 Router.route('/videos', function () {
   this.render("videos");
