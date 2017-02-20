@@ -140,24 +140,6 @@ async function currentusername()
   return currentUsername;
 }
 
-async function welcomemessage()
-{
-  currentUsername = Meteor.user().username;
-  document.getElementById("userwelcomemessage").innerHTML = "Welcome, " + currentUsername + "!";
-  return currentUsername;
-}
-
-async function currentusernametime()
-{
-  while(Meteor.user() == null)
-  {
-    await sleep(5);
-  }
-  currentUsername = Meteor.user().username;
-  document.getElementById("currentUsername").innerHTML = '<a href="/profile">' + currentUsername + '</a>';
-  return currentUsername;
-}
-
 Template.navbar.events({
   'submit #newTimer'(event) {
 
@@ -200,10 +182,6 @@ function timer()
 
   displaytimerborder();
   displaytimer();
-  if((Meteor.user() !== null))
-  {
-    currentusernametime();
-  }
   if(Router.current().route.getName() === "profile")
   {
     welcomemessage();
@@ -219,6 +197,10 @@ function timer()
 Template.navbar.helpers({
   times: function() {
     return ((mins < 10 ? '0' + mins : mins) + ':' + (secs < 10 ? '0' + secs : secs));
+  },
+  currentusername: function() {
+    currentUsername = Meteor.user().username;
+    return currentUsername;
   }
 });
 
@@ -277,7 +259,7 @@ Template.games.events({
 
     target.gameLink.value  = '';
     target.gameName.value  = '';
-    target.gamePic.value  = '';
+    target.gamesPic.value  = '';
     target.gametags.value  = '';
   },
 
@@ -317,6 +299,13 @@ Template.games.helpers({
       }
     }
     return result;
+  }
+});
+
+Template.eachgame.helpers({
+  eachgame() {
+  let gam = Games.findOne({_id: Router.current().params._id });
+  return gam;
   }
 });
 
