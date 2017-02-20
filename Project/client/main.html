@@ -77,24 +77,26 @@
 
 <template name="register">
   <div class="container" id="registerContainer">
-    <h2><i>Register</i></h2>
+    <h2><center>Register</center></h2>
+    &nbsp;&nbsp;
     <form class="register">
-      <p>Username: <input type="username" name="username"></p>
-      <p>Password: &nbsp;<input type="password" name="password"></p>
-      <p class="inline-p"><input type="submit" value="Register">&nbsp;&nbsp;<p class="inline-p" id="errorfound"></p></p>
-      <a href="/login">Login</a>
+      <p><input type="username" placeholder="Username" class="form-control" name="username"></p>
+      <p><input type="password" placeholder="Password" class="form-control" name="password"></p>&nbsp;&nbsp;
+      <p><input type="submit" value="Register" class="btn btn-info btn-primary btn-block"><p class="inline-p" id="errorfound"></p></p>
+      <a href="/login"><center>Login</center></a>
     </form>
   </div>
 </template>
 
 <template name="login">
   <div class="container" id="loginContainer">
-    <h2><i>Login</i></h2>
+    <h2><center>Login</center></h2>
+    &nbsp;&nbsp;
     <form class="login">
-      <p class="inline-p">Username: <input type="username" name="username">&nbsp;&nbsp;<p class="inline-p" id="errorusername"></p></p>
-      <p class="inline-p">Password: &nbsp;<input type="password" name="password">&nbsp;&nbsp;<p class="inline-p" id="errorpassword"></p></p>
-      <p class="inline-p"><input type="submit" value="Login">&nbsp;&nbsp;<p class="inline-p" id="errorfound"></p></p>
-      <a href="/register">Register</a>
+      <p><input type="username" placeholder="Username" class="form-control" name="username"><p class="inline-p" id="errorusername"></p></p>
+      <p><input type="password" placeholder="Password" class="form-control" name="password"><p class="inline-p" id="errorpassword"></p></p>&nbsp;&nbsp;
+      <p><input type="submit" class="btn btn-info btn-primary btn-block" value="Login"><p class="inline-p" id="errorfound"></p></p>
+      <a href="/register"><center>Register</center></a>
     </form>
   </div>
 </template>
