@@ -47,6 +47,14 @@ Template.navbar.onRendered({
 });
 */
 
+  Template.carousel.rendered = function() {
+    $('#carousel').slick({
+      dots: true,
+      arrows: true,
+      autoplay: true,
+    });
+  }
+
 Template.register.events({
   'submit form': function(event){
     event.preventDefault();

@@ -15,8 +15,29 @@
   transform: translate(0%, 20%)
 }
 
+#carousel {
+  border:   1px solid black;
+  width:    200px;
+  position: relative;
+  top:      100px;
+  left:     100px;
+}
+#carousel div {
+width:    200px;
+}
+
+.slick-prev:before, .slick-next:before {
+color:    silver;
+}
+.panel {
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
 body{
   font: 18px italic;
+  font-family: 'Raleway', sans-serif;
   background-color: #D3F5FF
 }
 
@@ -89,7 +110,11 @@ body{
 
 .navbar{
   background-color: #040E2B;
+  transition: all 0.45s;
+  opacity: 0.75;
+  filter: alpha(opacity=50);
 }
+
 
 #relaxxtitle{
   font-family: 'Oleo Script Swash Caps', cursive;
@@ -106,7 +131,20 @@ body{
   background-size: contain;
   background-position: center;
 }
-
+#homeImage{
+  width: 1100px;
+  height:400px;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(/images/mountains.jpg);
+  background-size: cover;
+}
+#relaxxContainer{
+  width: 500px;
+  height:100px;
+  background: url(/images/paintingPage.jpg);
+  background-size: cover;
+}
 #videoContainer{
   margin-top: 75px;
   margin-bottom: 50px;
@@ -122,6 +160,9 @@ body{
   margin-bottom: 50px;
 }
 
+.margingames{
+  margin-bottom: 25px;
+}
 
 
 /*

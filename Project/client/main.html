@@ -1,6 +1,7 @@
 <head>
   <title>Relaxx</title>
   <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
   </template>
 
 <template name="relaxx">
-  <div class="container" id="newContainer">
+  <div class="container" id="relaxxContainer">
     <!--
     <ul>
       <li><a href="{{pathFor route='home'}}">Home</a></li>
@@ -74,6 +75,16 @@
     -->
   </div>
 </template>
+
+<template name="carousel">
+
+<div id="carousel">
+<div>swag moneyyyyyyy</div>
+<div><img src="https://raw.githubusercontent.com/kenwheeler/slick/master/img/slick.gif" width="200px" /></div>
+<div><img src="https://raw.githubusercontent.com/kenwheeler/slick/master/img/slick.gif" width="200px" /></div>
+</div>
+</template>
+
 
 <template name="register">
   <div class="container" id="registerContainer">
@@ -116,7 +127,13 @@
 </template>
 
 <template name="home">
-  <div class="homecontainer container">
+  <div class="homecontainer container" id="homeContainer">
+    <div id="homeImage">
+        {{> carousel}}
+    </div>
+    <br>
+    <div class= "row">
+      <div class="col-sm-4">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Featured Music</h3>
@@ -128,7 +145,8 @@
           <span class="label label-info smalllabel">Coldplay</span>
       </div>
     </div>
-
+  </div>
+    <div class="col-sm-4">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Featured Videos</h3>
@@ -141,7 +159,9 @@
            <span class="label label-info smalllabel">Timelapse</span>
       </div>
     </div>
+  </div>
 
+    <div class="col-sm-4">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Featured Games</h3>
@@ -151,6 +171,8 @@
       </div>
     </div>
   </div>
+</div>
+</div>
 </template>
 
 <template name ="eachgame">
@@ -172,8 +194,9 @@
   <div class="container" id="gamesContainer">
     <div class="panel panel-default">
       <div class="panel-body">
-
+          <div class="row">
     {{ #each games }}
+    <div class="col-sm-6 margingames">
       <a href="game/{{this._id}}">
         <img src="{{this.gamePic}}" name="gamepic" width="187.5" height="150" class="gamepic">
       </a>
@@ -186,9 +209,9 @@
             <span class="label label-info" style="font-size: 15px">{{tag}}</span>
           {{ /each }}
       </div>
-      <br>
+    </div>
     {{ /each }}
-
+  </div>
     <br>
 
     <form id="addGame">
@@ -208,7 +231,7 @@
       <label for="gametags">Tags (Seperated by commas and spaces)</label>
       <input type="text" class="form-control" id="gametags" placeholder="Puzzle, Minigame">
     </div>
-    <button type="submit" class="btn btn-default">Post Game</button>
+    <button type="submit" class="btn btn-info btn-primary">Post Game</button>
     </form>
 
     <h3><strong>Comments:</strong></h3>
@@ -460,7 +483,7 @@
       <label for="videotags">Tags (Seperated by commas and spaces)</label>
       <input type="text" class="form-control" id="videotags" placeholder="Relaxx, Chill, Scenic, Nature">
     </div>
-    <button type="submit" class="btn btn-default">Post Video</button>
+    <button type="submit" class="btn btn-primary btn-info">Post Video</button>
     </form>
 
     <h3><strong>Comments:</strong></h3>
