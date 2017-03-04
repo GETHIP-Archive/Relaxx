@@ -2,6 +2,8 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import {Videos} from '../imports/api/videos.js';
+import {Musics} from '../imports/api/musics.js';
+import {Soundclouds} from '../imports/api/soundclouds.js';
 import {Games} from '../imports/api/games.js';
 import './main.html';
 
@@ -28,6 +30,10 @@ var currentUsername = ""
 var videosearchingtag = null;
 var alltagbuttons = [""];
 
+var musicsearchingtag = null;
+var soundcloudsearchingtag = null;
+var allmusictagbuttons = [""];
+
 /*
 Template.navbar.onRendered({
   var modal = document.getElementById('timesUpBox');
@@ -50,13 +56,14 @@ Template.navbar.onRendered({
 });
 */
 
-  Template.carousel.rendered = function() {
-    $('#carousel').slick({
-      dots: true,
-      arrows: true,
-      autoplay: true,
-    });
-  }
+Template.carousel.rendered = function() {
+  $('#carousel').slick({
+    dots: true,
+    arrows: true,
+    autoplay: true,
+    speed: 500,
+  });
+}
 
 Template.register.events({
   'submit form': function(event){
@@ -340,6 +347,7 @@ Template.videos.events({
     target.videotags.value  = '';
   },
 
+  /*
   'submit #addComment'(event) {
     event.preventDefault();
 
@@ -353,36 +361,20 @@ Template.videos.events({
     target.videoname.value = '';
     target.videocomment.value = '';
   },
+  */
 });
 
 Template.videos.helpers({
+  /*
   videonames: function() {
     return videoname;
   },
   videocomments: function() {
     return "<strong>" + videocomment + "</strong>";
   },
+  */
   videos: function() {
     return Videos.find();
-  },
-  videosearchtags: function(searchalltags)
-  {
-    result = false;
-    if(videosearchingtag == null)
-    {
-      result = true;
-    }
-    else
-    {
-      for(n in searchalltags)
-      {
-        if(searchalltags[n] === videosearchingtag)
-        {
-          result = true;
-        }
-      }
-    }
-    return result;
   },
   videouniquetags: function(findingalltags)
   {
@@ -470,3 +462,271 @@ Template.videos.events({
   },
 });
 */
+
+Template.music.events({
+  'submit #addMusic'(event) {
+    event.preventDefault();
+    var target = event.target;
+    //const musicName = event.musicName.value;
+    var musicLink = target.musicLink.value;
+    var musictags = target.musictags.value;
+    var musicalltags = musictags.replace(/ /g,"");
+    musicalltags = musicalltags.split(",");
+    console.log(musicalltags);
+    // Insert a music into the collection
+    Musics.insert({
+      musicLink: musicLink,
+      musicalltags: musicalltags
+    });
+
+    target.musicLink.value  = '';
+    target.musictags.value  = '';
+  },
+
+  'submit #addSoundcloud'(event) {
+    event.preventDefault();
+    var target = event.target;
+    //const musicName = event.musicName.value;
+    var soundcloudLink = target.soundcloudLink.value;
+    var soundcloudtags = target.soundcloudtags.value;
+    var soundcloudalltags = soundcloudtags.replace(/ /g,"");
+    soundcloudalltags = soundcloudalltags.split(",");
+    console.log(soundcloudalltags);
+    // Insert a soundcloud into the collection
+    Soundclouds.insert({
+      soundcloudLink: soundcloudLink,
+      soundcloudalltags: soundcloudalltags
+    });
+
+    target.soundcloudLink.value  = '';
+    target.soundcloudtags.value  = '';
+  },
+
+  /*
+  'submit #addComment'(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    var musicname = target.musicname.value;
+    var musiccomment = target.musiccomment.value;
+
+    document.getElementById("musicnames").innerHTML = "<strong>" + musicname + "</strong>";
+    document.getElementById("musiccomments").innerHTML = musiccomment;
+
+    target.musicname.value = '';
+    target.musiccomment.value = '';
+  },
+  */
+});
+
+Template.searchmusic.events({
+  'submit #addMusic'(event) {
+    event.preventDefault();
+    var target = event.target;
+    //const musicName = event.musicName.value;
+    var musicLink = target.musicLink.value;
+    var musictags = target.musictags.value;
+    var musicalltags = musictags.replace(/ /g,"");
+    musicalltags = musicalltags.split(",");
+    console.log(musicalltags);
+    // Insert a music into the collection
+    Musics.insert({
+      musicLink: musicLink,
+      musicalltags: musicalltags
+    });
+
+    target.musicLink.value  = '';
+    target.musictags.value  = '';
+  },
+
+  'submit #addSoundcloud'(event) {
+    event.preventDefault();
+    var target = event.target;
+    //const musicName = event.musicName.value;
+    var soundcloudLink = target.soundcloudLink.value;
+    var soundcloudtags = target.soundcloudtags.value;
+    var soundcloudalltags = soundcloudtags.replace(/ /g,"");
+    soundcloudalltags = soundcloudalltags.split(",");
+    console.log(soundcloudalltags);
+    // Insert a soundcloud into the collection
+    Soundclouds.insert({
+      soundcloudLink: soundcloudLink,
+      soundcloudalltags: soundcloudalltags
+    });
+
+    target.soundcloudLink.value  = '';
+    target.soundcloudtags.value  = '';
+  },
+
+  /*
+  'submit #addComment'(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    var musicname = target.musicname.value;
+    var musiccomment = target.musiccomment.value;
+
+    document.getElementById("musicnames").innerHTML = "<strong>" + musicname + "</strong>";
+    document.getElementById("musiccomments").innerHTML = musiccomment;
+
+    target.musicname.value = '';
+    target.musiccomment.value = '';
+  },
+  */
+});
+
+Template.music.helpers({
+  /*
+  musicnames: function() {
+    return musicname;
+  },
+  musiccomments: function() {
+    return "<strong>" + musiccomment + "</strong>";
+  },
+  */
+  musics: function() {
+    return Musics.find();
+  },
+  musicuniquetags: function(musicfindingalltags)
+  {
+    result = true;
+    i = musicalltagbuttons.length;
+    if(musicfindingalltags == null)
+    {
+      console.log(i);
+    }
+    while(i--)
+    {
+      if(musicalltagbuttons[i] === musicfindingalltags)
+      {
+        result = false;
+      }
+    }
+    if(result == true)
+    {
+      musicalltagbuttons[musicalltagbuttons.length + 1] = musicfindingalltags;
+    }
+    return result;
+  },
+  clearuniquetags: function()
+  {
+    musicalltagbuttons = [""];
+  },
+  soundclouds: function() {
+    return Soundclouds.find();
+  },
+  soundclouduniquetags: function(soundcloudfindingalltags)
+  {
+    result = true;
+    i = musicalltagbuttons.length;
+    if(soundcloudfindingalltags == null)
+    {
+      console.log(i);
+    }
+    while(i--)
+    {
+      if(musicalltagbuttons[i] === soundcloudfindingalltags)
+      {
+        result = false;
+      }
+    }
+    if(result == true)
+    {
+      musicalltagbuttons[musicalltagbuttons.length + 1] = soundcloudfindingalltags;
+    }
+    return result;
+  }
+});
+
+Template.searchmusic.helpers({
+  musics: function() {
+    return Musics.find();
+  },
+  musicsearchtags: function(musicsearchalltags)
+  {
+    result = false;
+    if(musicsearchalltags == null)
+    {
+      result = true;
+    }
+    else
+    {
+      for(n in musicsearchalltags)
+      {
+        if(musicsearchalltags[n] === Router.current().params._tag)
+        {
+          result = true;
+        }
+      }
+    }
+    return result;
+  },
+  musicuniquetags: function(musicfindingalltags)
+  {
+    result = true;
+    i = musicalltagbuttons.length;
+    if(musicfindingalltags == null)
+    {
+      console.log(i);
+    }
+    while(i--)
+    {
+      if(musicalltagbuttons[i] === musicfindingalltags)
+      {
+        result = false;
+      }
+    }
+    if(result == true)
+    {
+      musicalltagbuttons[musicalltagbuttons.length + 1] = musicfindingalltags;
+    }
+    return result;
+  },
+  clearuniquetags: function()
+  {
+    musicalltagbuttons = [""];
+  },
+  soundclouds: function() {
+    return Soundclouds.find();
+  },
+  soundcloudsearchtags: function(soundcloudsearchalltags)
+  {
+    result = false;
+    if(soundcloudsearchalltags == null)
+    {
+      result = true;
+    }
+    else
+    {
+      for(n in soundcloudsearchalltags)
+      {
+        if(soundcloudsearchalltags[n] === Router.current().params._tag)
+        {
+          result = true;
+        }
+      }
+    }
+    return result;
+  },
+  soundclouduniquetags: function(soundcloudfindingalltags)
+  {
+    result = true;
+    i = musicalltagbuttons.length;
+    if(soundcloudfindingalltags == null)
+    {
+      console.log(i);
+    }
+    while(i--)
+    {
+      if(musicalltagbuttons[i] === soundcloudfindingalltags)
+      {
+        result = false;
+      }
+    }
+    if(result == true)
+    {
+      musicalltagbuttons[musicalltagbuttons.length + 1] = soundcloudfindingalltags;
+    }
+    return result;
+  }
+});

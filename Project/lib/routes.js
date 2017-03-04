@@ -1,4 +1,6 @@
 import {Videos} from '../imports/api/videos.js';
+import {Musics} from '../imports/api/musics.js';
+import {Soundclouds} from '../imports/api/soundclouds.js';
 import {Games} from '../imports/api/games.js';
 
 Router.route('/game/:_id', function () {
@@ -8,6 +10,11 @@ Router.route('/game/:_id', function () {
 
 Router.route('/videos/:_tag', function () {
   this.render("searchvideos");
+  }
+);
+
+Router.route('/music/:_tag', function () {
+  this.render("searchmusic");
   }
 );
 

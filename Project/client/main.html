@@ -29,7 +29,7 @@
             </ul>
             <form id="newTimer" class="navbar-form navbar-right input-group-sm">
               <div class="form-group">
-                <input type="number" class="form-control" id="time" placeholder="30">
+                <input type="number" class="form-control" id="time" placeholder="(secs)">
                 <button type="submit" class="btn btn-default">Start</button>
               </div>
             </form>
@@ -256,79 +256,59 @@
 </div>
 </template>
 
-<template name="music">
-<div class="container" id="musicContainer">
-  <div class="row">
-    <div class="col-sm-6 container">
+<template name="searchmusic">
+  <div class="container" id="musicContainer">
+    <div class="row">
       <div class="panel panel-default">
         <div class="panel-body">
-        <center>
-          <div class="youtubemusiccontainer">
-            <iframe class="youtubemusic" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-            <span class="label label-info">Coldplay</span>
-            <span class="label label-info">Insrumental</span>
-            <span class="label label-info">~4.5 minutes</span>
+          <form id="searchtag">
+            {{clearuniquetags}}
 
-          <br>
+            {{ #each musics }}
+              {{ #each tag in this.musicalltags }}
+                {{ #if musicuniquetags tag }}
+                  <a href="{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
+            {{ /each }}
 
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/ol0dPJdzm1M?list=PL-5GinJW4bEYBetMojMNkjt88SgnEpKlm" frameborder="0" allowfullscreen></iframe>
-          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-            <span class="label label-info">Billy Joel</span>
-            <span class="label label-info">Piano</span>
-            <span class="label label-info">6 minutes</span>
-            <span class="label label-info">Soul</span>
-            <span class="label label-info">Instrumental</span>
-            <span class="label label-info">Jazzy</span>
+            {{ #each soundclouds }}
+              {{ #each tag in this.soundcloudalltags }}
+                {{ #if soundclouduniquetags tag }}
+                  <a href="{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
+            {{ /each }}
+          </form>
+        </div>
+      </div>
+    </div>
 
-          <br>
+    <div class="row">
+      <div class="col-sm-6 container">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <center>
 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Fi0xN499IXE" frameborder="0" allowfullscreen></iframe>
-            <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-            <span><strong>Tags: </strong></span>
-                <span class="label label-info">Elton John</span>
-                <span class="label label-info">Insrumental</span>
-                <span class="label label-info">~4 minutes</span>
-                <span class="label label-info">Soul</span>
+              {{ #each musics }}
+                {{ #if musicsearchtags this.musicalltags }}
+                  <div class="youtubemusiccontainer">
+                    <iframe class="youtubemusic" src="{{this.musicLink}}" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <h3 class="media-heading">{{this.musicName}} <small>{{this.musicLength}}</small></h3>
+                  <span><strong>Tags: </strong></span>
+                    {{ #each tag in this.musicalltags }}
+                      <span class="label label-info">{{tag}}</span>
+                    {{ /each }}
+                  <br>
+                  <br>
+                {{ /if }}
+              {{ /each }}
 
-          <br>
-
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/lSU1eFxgr68" frameborder="0" allowfullscreen></iframe>
-          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-            <span class="label label-info">Vanilla (Band)</span>
-            <span class="label label-info">Beat</span>
-            <span class="label label-info">Full Album</span>
-            <span class="label label-info">Soul</span>
-            <span class="label label-info">Instrumental</span>
-            <span class="label label-info">Jazz</span>
-
-          <br>
-
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
-            <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-            <span><strong>Tags: </strong></span>
-                <span class="label label-info">Mild High Club</span>
-                <span class="label label-info">Beat</span>
-                <span class="label label-info">Peaceful</span>
-                <span class="label label-info">Scenic</span>
-                <span class="label label-info">Sunsets</span>
-                <span class="label label-info">Nature</span>
-
-          <br>
-
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
-            <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-            <span><strong>Tags: </strong></span>
-                <span class="label label-info">Mild High Club</span>
-                <span class="label label-info">Electronic Samples</span>
-                <span class="label label-info">Beat</span>
-                <span class="label label-info">Full Album</span>
-
-          <br>
           </center>
         </div>
       </div>
@@ -337,13 +317,157 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="container" id="SoundCloudContainer">
-            <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-            <br>
-            <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/245009995&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+            <center>
+              {{ #each soundclouds }}
+                {{ #if soundcloudsearchtags this.soundcloudalltags }}
+                  {{{ this.soundcloudLink }}}
+                  <h3 class="media-heading">{{this.soundcloudName}} <small>{{this.soundcloudLength}}</small></h3>
+                  <span><strong>Tags: </strong></span>
+                    {{ #each tag in this.soundcloudalltags }}
+                      <span class="label label-info">{{tag}}</span>
+                    {{ /each }}
+                  <br>
+                  <br>
+                {{ /if }}
+              {{ /each }}
+            </center>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <br>
+  <div class="container">
+    <form id="addMusic">
+      <div class="form-group">
+        <label for="musicLink">Link (embedded)</label>
+        <input type="text" class="form-control" id="musicLink" placeholder="https://www.youtube.com/embed/RB-RcX5DS5A">
+      </div>
+      <div class="form-group">
+        <label for="musictags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="musictags" placeholder="Coldplay, Instrumental, ~4.5 minutes">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post Music</button>
+    </form>
+    <br>
+    <br>
+    <form id="addSoundcloud">
+      <div class="form-group">
+        <label for="soundcloudLink">Link (full embedded link)</label>
+        <input type="text" class="form-control" id="soundcloudLink" placeholder='<iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>'>
+      </div>
+      <div class="form-group">
+        <label for="soundcloudtags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="soundcloudtags" placeholder="Chill, Relax, Tranquil">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post SoundCloud</button>
+    </form>
+  </div>
+</div>
+</template>
+
+<template name="music">
+<div class="container" id="musicContainer">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form id="searchtag">
+          {{clearuniquetags}}
+
+          {{ #each musics }}
+            {{ #each tag in this.musicalltags }}
+              {{ #if musicuniquetags tag }}
+                <a href="music/{{tag}}">
+                  <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                </a>
+              {{ /if }}
+            {{ /each }}
+          {{ /each }}
+
+          {{ #each soundclouds }}
+            {{ #each tag in this.soundcloudalltags }}
+              {{ #if soundclouduniquetags tag }}
+                <a href="{{tag}}">
+                  <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                </a>
+              {{ /if }}
+            {{ /each }}
+          {{ /each }}
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <center>
+
+          {{ #each musics }}
+            <div class="youtubemusiccontainer">
+              <iframe class="youtubemusic" src="{{this.musicLink}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <h3 class="media-heading">{{this.musicName}} <small>{{this.musicLength}}</small></h3>
+            <span><strong>Tags: </strong></span>
+              {{ #each tag in this.musicalltags }}
+                <span class="label label-info">{{tag}}</span>
+              {{ /each }}
+            <br>
+            <br>
+          {{ /each }}
+
+          </center>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="container" id="SoundCloudContainer">
+            <center>
+              {{ #each soundclouds }}
+                {{{ this.soundcloudLink }}}
+                <h3 class="media-heading">{{this.soundcloudName}} <small>{{this.soundcloudLength}}</small></h3>
+                <span><strong>Tags: </strong></span>
+                  {{ #each tag in this.soundcloudalltags }}
+                    <span class="label label-info">{{tag}}</span>
+                  {{ /each }}
+                <br>
+                <br>
+              {{ /each }}
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <form id="addMusic">
+      <div class="form-group">
+        <label for="musicLink">Link (embedded)</label>
+        <input type="text" class="form-control" id="musicLink" placeholder="https://www.youtube.com/embed/RB-RcX5DS5A">
+      </div>
+      <div class="form-group">
+        <label for="musictags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="musictags" placeholder="Coldplay, Instrumental, ~4.5 minutes">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post Music</button>
+    </form>
+    <br>
+    <br>
+    <form id="addSoundcloud">
+      <div class="form-group">
+        <label for="soundcloudLink">Link (full embedded link)</label>
+        <input type="text" class="form-control" id="soundcloudLink" placeholder='<iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>'>
+      </div>
+      <div class="form-group">
+        <label for="soundcloudtags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="soundcloudtags" placeholder="Chill, Relax, Tranquil">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post SoundCloud</button>
+    </form>
   </div>
 </div>
 </template>
@@ -408,17 +532,15 @@
         <br>
 
         {{ #each videos }}
-          {{ #if videosearchtags this.videoalltags }}
-            <center>
-              <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
-              <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
-              <span><strong>Tags: </strong></span>
-                {{ #each tag in this.videoalltags }}
-                  <span class="label label-info">{{tag}}</span>
-                {{ /each }}
-            </center>
-            <br>
-          {{ /if }}
+          <center>
+            <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+            <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+            <span><strong>Tags: </strong></span>
+              {{ #each tag in this.videoalltags }}
+                <span class="label label-info">{{tag}}</span>
+              {{ /each }}
+          </center>
+          <br>
         {{ /each }}
 
         <center>
@@ -535,30 +657,17 @@
 
     <span class="label label-info">{{this.alltags}}</span>
 -->
-    {{ #each videos }}
-      {{ #if videosearchtags this.alltags }}
-        <center>
-          <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
-          <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-            {{ #each tag in this.videoalltags }}
-              <span class="label label-info">{{tag}}</span>
-            {{ /each }}
-        </center>
-        <br>
-      {{ /if }}
-    {{ /each }}
 
     <form id="addVideo">
-    <div class="form-group">
-      <label for="videoLink">Link (embedded)</label>
-      <input type="text" class="form-control" id="videoLink" placeholder="https://www.youtube.com/embed/m_5g_D_iP2s">
-    </div>
-    <div class="form-group">
-      <label for="videotags">Tags (Seperated by commas and spaces)</label>
-      <input type="text" class="form-control" id="videotags" placeholder="Relaxx, Chill, Scenic, Nature">
-    </div>
-    <button type="submit" class="btn btn-primary btn-info">Post Video</button>
+      <div class="form-group">
+        <label for="videoLink">Link (embedded)</label>
+        <input type="text" class="form-control" id="videoLink" placeholder="https://www.youtube.com/embed/m_5g_D_iP2s">
+      </div>
+      <div class="form-group">
+        <label for="videotags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="videotags" placeholder="Relaxx, Chill, Scenic, Nature">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post Video</button>
     </form>
 
     <h3><strong>Comments:</strong></h3>
