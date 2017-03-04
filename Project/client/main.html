@@ -194,66 +194,66 @@
   <div class="container" id="gamesContainer">
     <div class="panel panel-default">
       <div class="panel-body">
-          <div class="row">
-    {{ #each games }}
-    <div class="col-sm-6 margingames">
-      <a href="game/{{this._id}}">
-        <img src="{{this.gamePic}}" name="gamepic" width="187.5" height="150" class="gamepic">
-      </a>
-      <div class="inline-pp">
-        <a href="game/{{this._id}}">
-          <h3 style="margin-top: 0px">{{this.gameName}}</h3>
-        </a>
-        <span style="font-size: 20px"><strong>Tags: </strong></span>
-          {{ #each tag in this.gamealltags }}
-            <span class="label label-info" style="font-size: 15px">{{tag}}</span>
+        <div class="row">
+          {{ #each games }}
+          <div class="col-sm-6 margingames">
+            <a href="game/{{this._id}}">
+              <img src="{{this.gamePic}}" name="gamepic" width="187.5" height="150" class="gamepic">
+            </a>
+            <div class="inline-pp">
+              <a href="game/{{this._id}}">
+                <h3 style="margin-top: 0px">{{this.gameName}}</h3>
+              </a>
+              <span style="font-size: 20px"><strong>Tags: </strong></span>
+                {{ #each tag in this.gamealltags }}
+                  <span class="label label-info" style="font-size: 15px">{{tag}}</span>
+                {{ /each }}
+            </div>
+            <br>
+            <br>
+          </div>
           {{ /each }}
+        </div>
+        <br>
+
+        <form id="addGame">
+          <div class="form-group">
+            <label for="gameLink">Link (full embedded link)</label>
+            <input type="text" class="form-control" id="gameLink" placeholder='<embed width="700" height="520" base="http://external.kongregate-games.com/gamez/0015/0741/live/" src="http://external.kongregate-games.com/gamez/0015/0741/live/embeddable_150741.swf" type="application/x-shockwave-flash">'>
+          </div>
+          <div class="form-group">
+            <label for="gameName">Name</label>
+            <input type="text" class="form-control" id="gameName" placeholder="Ninja Painter 2">
+          </div>
+          <div class="form-group">
+            <label for="gamePic">Screenshot (Linked)(Optional)</label>
+            <input type="text" class="form-control" id="gamePic" placeholder="https://cdn2.kongcdn.com/game_icons/0039/8195/np2-250-200-2.png">
+          </div>
+          <div class="form-group">
+            <label for="gametags">Tags (Seperated by commas and spaces)</label>
+            <input type="text" class="form-control" id="gametags" placeholder="Puzzle, Minigame">
+          </div>
+          <button type="submit" class="btn btn-info btn-primary">Post Game</button>
+        </form>
+
+        <h3><strong>Comments:</strong></h3>
+        <p id="gamenames"><strong>{{gamenames}}</strong></p>
+        <p id="gamecomments">{{gamecomments}}</p>
+        <h3>Leave a comment</h3>
+        <form id="gameaddComment">
+          <div class="form-group">
+            <label for="gamename">Name</label>
+            <input type="text" class="form-control" id="gamename" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="gamecomment">Comment</label>
+            <input type="text" class="form-control" id="gamecomment" placeholder="Comment">
+          </div>
+          <button type="submit" class="btn btn-default">Post</button>
+        </form>
       </div>
-      <br>
-      <br>
     </div>
-    {{ /each }}
   </div>
-    <br>
-
-    <form id="addGame">
-    <div class="form-group">
-      <label for="gameLink">Link (full embedded link)</label>
-      <input type="text" class="form-control" id="gameLink" placeholder='<embed width="700" height="520" base="http://external.kongregate-games.com/gamez/0015/0741/live/" src="http://external.kongregate-games.com/gamez/0015/0741/live/embeddable_150741.swf" type="application/x-shockwave-flash">'>
-    </div>
-    <div class="form-group">
-      <label for="gameName">Name</label>
-      <input type="text" class="form-control" id="gameName" placeholder="Ninja Painter 2">
-    </div>
-    <div class="form-group">
-      <label for="gamePic">Screenshot (Linked)(Optional)</label>
-      <input type="text" class="form-control" id="gamePic" placeholder="https://cdn2.kongcdn.com/game_icons/0039/8195/np2-250-200-2.png">
-    </div>
-    <div class="form-group">
-      <label for="gametags">Tags (Seperated by commas and spaces)</label>
-      <input type="text" class="form-control" id="gametags" placeholder="Puzzle, Minigame">
-    </div>
-    <button type="submit" class="btn btn-info btn-primary">Post Game</button>
-    </form>
-
-    <h3><strong>Comments:</strong></h3>
-    <p id="gamenames"><strong>{{gamenames}}</strong></p>
-    <p id="gamecomments">{{gamecomments}}</p>
-    <h3>Leave a comment</h3>
-    <form id="gameaddComment">
-      <div class="form-group">
-        <label for="gamename">Name</label>
-      <input type="text" class="form-control" id="gamename" placeholder="Name">
-    </div>
-    <div class="form-group">
-      <label for="gamecomment">Comment</label>
-      <input type="text" class="form-control" id="gamecomment" placeholder="Comment">
-    </div>
-    <button type="submit" class="btn btn-default">Post</button>
-    </form>
-  </div>
-  </div>
-</div>
 </template>
 
 <template name="searchmusic">
@@ -261,29 +261,31 @@
     <div class="row">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form id="searchtag">
-            {{clearuniquetags}}
+          <center>
+            <form id="searchtag">
+              {{clearuniquetags}}
 
-            {{ #each musics }}
-              {{ #each tag in this.musicalltags }}
-                {{ #if musicuniquetags tag }}
-                  <a href="{{tag}}">
-                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
-                  </a>
-                {{ /if }}
+              {{ #each musics }}
+                {{ #each tag in this.musicalltags }}
+                  {{ #if musicuniquetags tag }}
+                    <a style="text-decoration: none" href="{{tag}}">
+                      <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                    </a>
+                  {{ /if }}
+                {{ /each }}
               {{ /each }}
-            {{ /each }}
 
-            {{ #each soundclouds }}
-              {{ #each tag in this.soundcloudalltags }}
-                {{ #if soundclouduniquetags tag }}
-                  <a href="{{tag}}">
-                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
-                  </a>
-                {{ /if }}
+              {{ #each soundclouds }}
+                {{ #each tag in this.soundcloudalltags }}
+                  {{ #if soundclouduniquetags tag }}
+                    <a style="text-decoration: none" href="{{tag}}">
+                      <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                    </a>
+                  {{ /if }}
+                {{ /each }}
               {{ /each }}
-            {{ /each }}
-          </form>
+            </form>
+          </center>
         </div>
       </div>
     </div>
@@ -371,29 +373,32 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-body">
-        <form id="searchtag">
-          {{clearuniquetags}}
+        <center>
+          <form id="searchtag">
+            {{clearuniquetags}}
 
-          {{ #each musics }}
-            {{ #each tag in this.musicalltags }}
-              {{ #if musicuniquetags tag }}
-                <a href="music/{{tag}}">
-                  <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
-                </a>
-              {{ /if }}
+            {{ #each musics }}
+              {{ #each tag in this.musicalltags }}
+                {{ #if musicuniquetags tag }}
+                  <a style="text-decoration: none" href="music/{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
             {{ /each }}
-          {{ /each }}
 
-          {{ #each soundclouds }}
-            {{ #each tag in this.soundcloudalltags }}
-              {{ #if soundclouduniquetags tag }}
-                <a href="{{tag}}">
-                  <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
-                </a>
-              {{ /if }}
+            {{ #each soundclouds }}
+              {{ #each tag in this.soundcloudalltags }}
+                {{ #if soundclouduniquetags tag }}
+                  <a href="{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
             {{ /each }}
-          {{ /each }}
-        </form>
+
+          </form>
+        </center>
       </div>
     </div>
   </div>
@@ -476,36 +481,45 @@
   <div class="container" id="videoContainer">
     <div class="panel panel-default">
       <div class="panel-body">
-        <form id="searchtag">
-          {{clearuniquetags}}
+        <center>
+          <form id="searchtag">
+            {{clearuniquetags}}
 
-          {{ #each videos }}
-            {{ #each tag in this.videoalltags }}
-              {{ #if videouniquetags tag }}
-                <a href="{{tag}}">
-                  <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
-                </a>
-              {{ /if }}
+            {{ #each videos }}
+              {{ #each tag in this.videoalltags }}
+                {{ #if videouniquetags tag }}
+                  <a href="{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
             {{ /each }}
-          {{ /each }}
-        </form>
+          </form>
+        </center>
 
         <br>
 
-        {{ #each videos }}
-          {{ #if videosearchtags this.videoalltags }}
-            <center>
-              <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
-              <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
-              <span><strong>Tags: </strong></span>
-                {{ #each tag in this.videoalltags }}
-                  <span class="label label-info">{{tag}}</span>
-                {{ /each }}
-            </center>
-            <br>
-          {{ /if }}
-        {{ /each }}
+        <div class="row">
 
+          {{ #each videos }}
+            {{ #if videosearchtags this.videoalltags }}
+              <div class="col-sm-6">
+                <center>
+                  <div class="youtubemusiccontainer">
+                    <iframe class="youtubemusic" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+                  <span><strong>Tags: </strong></span>
+                    {{ #each tag in this.videoalltags }}
+                      <span class="label label-info">{{tag}}</span>
+                    {{ /each }}
+                </center>
+                <br>
+              </div>
+            {{ /if }}
+          {{ /each }}
+
+        </div>
       </div>
     </div>
   </div>
@@ -515,120 +529,43 @@
   <div class="container" id="videoContainer">
     <div class="panel panel-default">
       <div class="panel-body">
-        <form id="searchtag">
-          {{clearuniquetags}}
+        <center>
+          <form id="searchtag">
+            {{clearuniquetags}}
+
+            {{ #each videos }}
+              {{ #each tag in this.videoalltags }}
+                {{ #if videouniquetags tag }}
+                  <a href="videos/{{tag}}">
+                    <button type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
+            {{ /each }}
+          </form>
+        </center>
+
+        <br>
+
+        <div class="row">
 
           {{ #each videos }}
-            {{ #each tag in this.videoalltags }}
-              {{ #if videouniquetags tag }}
-                <a href="videos/{{tag}}">
-                  <button type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
-                </a>
-              {{ /if }}
-            {{ /each }}
+            <div class="col-sm-6">
+              <center>
+                <div class="youtubemusiccontainer">
+                  <iframe class="youtubemusic" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+                <span><strong>Tags: </strong></span>
+                  {{ #each tag in this.videoalltags }}
+                    <span class="label label-info">{{tag}}</span>
+                  {{ /each }}
+              </center>
+              <br>
+            </div>
           {{ /each }}
-        </form>
 
-        <br>
-
-        {{ #each videos }}
-          <center>
-            <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
-            <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
-            <span><strong>Tags: </strong></span>
-              {{ #each tag in this.videoalltags }}
-                <span class="label label-info">{{tag}}</span>
-              {{ /each }}
-          </center>
-          <br>
-        {{ /each }}
-
-        <center>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/m_5g_D_iP2s" frameborder="0" allowfullscreen></iframe>
-          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-              <span class="label label-info">Relax</span>
-              <span class="label label-info">Chill</span>
-              <span class="label label-info">Peaceful</span>
-              <span class="label label-info">Scenic</span>
-              <span class="label label-info">Sunsets</span>
-              <span class="label label-info">Nature</span>
-        </center>
-        <br>
-        <center>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/8gD_9WPPFb4" frameborder="0" allowfullscreen></iframe>
-          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-              <span class="label label-info">Relax</span>
-              <span class="label label-info">Chill</span>
-              <span class="label label-info">Peaceful</span>
-              <span class="label label-info">Clouds</span>
-              <span class="label label-info">Sunsets</span>
-              <span class="label label-info">Nature</span>
-        </center>
-        <br>
-        <center>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/OX5QXc7FcP8" frameborder="0" allowfullscreen></iframe>
-          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-              <span class="label label-info">Relax</span>
-              <span class="label label-info">Chill</span>
-              <span class="label label-info">Peaceful</span>
-              <span class="label label-info">Ocean</span>
-              <span class="label label-info">Waves</span>
-              <span class="label label-info">Nature</span>
-        </center>
-        <br>
-        <center>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/5lsZb93rY8E?list=PL-5GinJW4bEYv1XzNs5BjWPhMQ6pv7TCS" frameborder="0" allowfullscreen></iframe>
-          <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-          <span><strong>Tags: </strong></span>
-              <span class="label label-info">Relax</span>
-              <span class="label label-info">Chill</span>
-              <span class="label label-info">Peaceful</span>
-              <span class="label label-info">Lonnie Smith</span>
-        </center>
-        <br>
-        <center>
-         <iframe width="560" height="315" src="https://www.youtube.com/embed/r3fE6FQT82s" frameborder="0" allowfullscreen></iframe>
-         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-         <span><strong>Tags: </strong></span>
-             <span class="label label-info">Nature</span>
-             <span class="label label-info">Timelapse</span>
-             <span class="label label-info">Peaceful</span>
-             <span class="label label-info">Piano</span>
-       </center>
-       <br>
-       <center>
-         <iframe width="560" height="315" src="https://www.youtube.com/embed/bdnHKdb-Oss" frameborder="0" allowfullscreen></iframe>
-         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-         <span><strong>Tags: </strong></span>
-             <span class="label label-info">Aquarium</span>
-             <span class="label label-info">Marine Life</span>
-             <span class="label label-info">Ocean</span>
-             <span class="label label-info">Underwater</span>
-       </center>
-       <br>
-       <center>
-         <iframe width="560" height="315" src="https://www.youtube.com/embed/VlucWfTUo1A?list=PLAEQD0ULngi67rwmhrkNjMZKvyCReqDV4" frameborder="0" allowfullscreen></iframe>
-         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-         <span><strong>Tags: </strong></span>
-             <span class="label label-info">Bob Ross</span>
-             <span class="label label-info">Chill</span>
-             <span class="label label-info">Joy of Painting</span>
-       </center>
-       <br>
-       <center>
-         <iframe width="560" height="315" src="https://www.youtube.com/embed/Urc9lKFe-m8" frameborder="0" allowfullscreen></iframe>
-         <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-         <span><strong>Tags: </strong></span>
-             <span class="label label-info">Bob Ross</span>
-             <span class="label label-info">Chill</span>
-             <span class="label label-info">Peaceful</span>
-             <span class="label label-info">Joy of Painting</span>
-       </center>
-       <br>
-
+        </div>
 <!--
       <hr>
       <center>
