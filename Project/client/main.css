@@ -169,6 +169,31 @@ body{
   margin-bottom: 25px;
 }
 
+.youtubemusiccontainer{
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-bottom: 56.25%;
+}
+
+.youtubemusic{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.btntag{
+  margin-bottom: 5px;
+  background-color: #ececec;
+  border-color: #a0a0a0;
+}
+
+.btntag:hover{
+  background-color: #62BFF0;
+  border-color: #a0a0a0;
+}
 
 /*
 .modal

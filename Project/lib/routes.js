@@ -2,11 +2,12 @@ import {Videos} from '../imports/api/videos.js';
 import {Games} from '../imports/api/games.js';
 
 Router.route('/game/:_id', function () {
-  var params = this.params; // { _id: "5" }
-  var id = params._id; // "5"
-  this.render("eachgame", {
-    data: function() { return Games.findOne({_id: this._id });}
-  });
+  this.render("eachgame");
+  }
+);
+
+Router.route('/videos/:_tag', function () {
+  this.render("searchvideos");
   }
 );
 

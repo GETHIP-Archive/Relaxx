@@ -25,6 +25,9 @@ var username = ""
 var password = ""
 var currentUsername = ""
 
+var videosearchingtag = null;
+var alltagbuttons = [""];
+
 /*
 Template.navbar.onRendered({
   var modal = document.getElementById('timesUpBox');
@@ -365,14 +368,85 @@ Template.videos.helpers({
   videosearchtags: function(searchalltags)
   {
     result = false;
+    if(videosearchingtag == null)
+    {
+      result = true;
+    }
+    else
+    {
+      for(n in searchalltags)
+      {
+        if(searchalltags[n] === videosearchingtag)
+        {
+          result = true;
+        }
+      }
+    }
+    return result;
+  },
+  videouniquetags: function(findingalltags)
+  {
+    result = true;
+    i = alltagbuttons.length;
+    if(findingalltags == null)
+    {
+      console.log(i);
+    }
+    while(i--)
+    {
+      if(alltagbuttons[i] === findingalltags)
+      {
+        result = false;
+      }
+    }
+    if(result == true)
+    {
+      alltagbuttons[alltagbuttons.length + 1] = findingalltags;
+    }
+    return result;
+  },
+  clearuniquetags: function()
+  {
+    alltagbuttons = [""];
+  }
+});
+
+Template.searchvideos.helpers({
+  videos: function() {
+    return Videos.find();
+  },
+  videosearchtags: function(searchalltags)
+  {
+    result = false;
     for(n in searchalltags)
     {
-      if(searchalltags[n] === videosearchingtag)
+      if(searchalltags[n] === Router.current().params._tag)
       {
         result = true;
       }
     }
     return result;
+  },
+  videouniquetags: function(findingalltags)
+  {
+    result = true;
+    i = alltagbuttons.length;
+    while(i--)
+    {
+      if(alltagbuttons[i] === findingalltags)
+      {
+        result = false;
+      }
+    }
+    if(result == true)
+    {
+      alltagbuttons[alltagbuttons.length + 1] = findingalltags;
+    }
+    return result;
+  },
+  clearuniquetags: function()
+  {
+    alltagbuttons = [""];
   }
 });
 

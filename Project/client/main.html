@@ -209,6 +209,8 @@
             <span class="label label-info" style="font-size: 15px">{{tag}}</span>
           {{ /each }}
       </div>
+      <br>
+      <br>
     </div>
     {{ /each }}
   </div>
@@ -255,97 +257,170 @@
 </template>
 
 <template name="music">
-  <div class="container" id="musicContainer">
-    <div class= "row">
-      <div class="col-sm-6">
-
-      <center>
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
-        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-        <span><strong>Tags: </strong></span>
-          <span class="label label-info">Coldplay</span>
-          <span class="label label-info">Insrumental</span>
-          <span class="label label-info">~4.5 minutes</span>
-
-        <br>
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ol0dPJdzm1M?list=PL-5GinJW4bEYBetMojMNkjt88SgnEpKlm" frameborder="0" allowfullscreen></iframe>
-        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-        <span><strong>Tags: </strong></span>
-          <span class="label label-info">Billy Joel</span>
-          <span class="label label-info">Piano</span>
-          <span class="label label-info">6 minutes</span>
-          <span class="label label-info">Soul</span>
-          <span class="label label-info">Instrumental</span>
-          <span class="label label-info">Jazzy</span>
-
-        <br>
-
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Fi0xN499IXE" frameborder="0" allowfullscreen></iframe>
+<div class="container" id="musicContainer">
+  <div class="row">
+    <div class="col-sm-6 container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+        <center>
+          <div class="youtubemusiccontainer">
+            <iframe class="youtubemusic" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
+          </div>
           <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
           <span><strong>Tags: </strong></span>
-              <span class="label label-info">Elton John</span>
-              <span class="label label-info">Insrumental</span>
-              <span class="label label-info">~4 minutes</span>
-              <span class="label label-info">Soul</span>
+            <span class="label label-info">Coldplay</span>
+            <span class="label label-info">Insrumental</span>
+            <span class="label label-info">~4.5 minutes</span>
 
-        <br>
+          <br>
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/lSU1eFxgr68" frameborder="0" allowfullscreen></iframe>
-        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
-        <span><strong>Tags: </strong></span>
-          <span class="label label-info">Vanilla (Band)</span>
-          <span class="label label-info">Beat</span>
-          <span class="label label-info">Full Album</span>
-          <span class="label label-info">Soul</span>
-          <span class="label label-info">Instrumental</span>
-          <span class="label label-info">Jazz</span>
-
-        <br>
-
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/ol0dPJdzm1M?list=PL-5GinJW4bEYBetMojMNkjt88SgnEpKlm" frameborder="0" allowfullscreen></iframe>
           <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
           <span><strong>Tags: </strong></span>
-              <span class="label label-info">Mild High Club</span>
-              <span class="label label-info">Beat</span>
-              <span class="label label-info">Peaceful</span>
-              <span class="label label-info">Scenic</span>
-              <span class="label label-info">Sunsets</span>
-              <span class="label label-info">Nature</span>
+            <span class="label label-info">Billy Joel</span>
+            <span class="label label-info">Piano</span>
+            <span class="label label-info">6 minutes</span>
+            <span class="label label-info">Soul</span>
+            <span class="label label-info">Instrumental</span>
+            <span class="label label-info">Jazzy</span>
 
-        <br>
+          <br>
 
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Fi0xN499IXE" frameborder="0" allowfullscreen></iframe>
+            <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+            <span><strong>Tags: </strong></span>
+                <span class="label label-info">Elton John</span>
+                <span class="label label-info">Insrumental</span>
+                <span class="label label-info">~4 minutes</span>
+                <span class="label label-info">Soul</span>
+
+          <br>
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/lSU1eFxgr68" frameborder="0" allowfullscreen></iframe>
           <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
           <span><strong>Tags: </strong></span>
-              <span class="label label-info">Mild High Club</span>
-              <span class="label label-info">Electronic Samples</span>
-              <span class="label label-info">Beat</span>
-              <span class="label label-info">Full Album</span>
+            <span class="label label-info">Vanilla (Band)</span>
+            <span class="label label-info">Beat</span>
+            <span class="label label-info">Full Album</span>
+            <span class="label label-info">Soul</span>
+            <span class="label label-info">Instrumental</span>
+            <span class="label label-info">Jazz</span>
 
-      <br>
-      </center>
+          <br>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+            <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+            <span><strong>Tags: </strong></span>
+                <span class="label label-info">Mild High Club</span>
+                <span class="label label-info">Beat</span>
+                <span class="label label-info">Peaceful</span>
+                <span class="label label-info">Scenic</span>
+                <span class="label label-info">Sunsets</span>
+                <span class="label label-info">Nature</span>
+
+          <br>
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PDOEkGMtjt8" frameborder="0" allowfullscreen></iframe>
+            <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+            <span><strong>Tags: </strong></span>
+                <span class="label label-info">Mild High Club</span>
+                <span class="label label-info">Electronic Samples</span>
+                <span class="label label-info">Beat</span>
+                <span class="label label-info">Full Album</span>
+
+          <br>
+          </center>
+        </div>
+      </div>
     </div>
-  <div class="col-sm-6">
-    <div  class="container" id="SoundCloudContainer">
-
-
-      <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-        <br>
-      <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/245009995&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-
+    <div class="col-sm-6 container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="container" id="SoundCloudContainer">
+            <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+            <br>
+            <iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/245009995&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
   </div>
 </div>
 </template>
+
+<template name="searchvideos">
+  <div class="container" id="videoContainer">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form id="searchtag">
+          {{clearuniquetags}}
+
+          {{ #each videos }}
+            {{ #each tag in this.videoalltags }}
+              {{ #if videouniquetags tag }}
+                <a href="{{tag}}">
+                  <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                </a>
+              {{ /if }}
+            {{ /each }}
+          {{ /each }}
+        </form>
+
+        <br>
+
+        {{ #each videos }}
+          {{ #if videosearchtags this.videoalltags }}
+            <center>
+              <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+              <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+              <span><strong>Tags: </strong></span>
+                {{ #each tag in this.videoalltags }}
+                  <span class="label label-info">{{tag}}</span>
+                {{ /each }}
+            </center>
+            <br>
+          {{ /if }}
+        {{ /each }}
+
+      </div>
+    </div>
+  </div>
+</template>
+
 <template name="videos">
   <div class="container" id="videoContainer">
     <div class="panel panel-default">
       <div class="panel-body">
-      </div>
-      <div class="panel-body">
+        <form id="searchtag">
+          {{clearuniquetags}}
+
+          {{ #each videos }}
+            {{ #each tag in this.videoalltags }}
+              {{ #if videouniquetags tag }}
+                <a href="videos/{{tag}}">
+                  <button type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                </a>
+              {{ /if }}
+            {{ /each }}
+          {{ /each }}
+        </form>
+
+        <br>
+
+        {{ #each videos }}
+          {{ #if videosearchtags this.videoalltags }}
+            <center>
+              <iframe width="560" height="315" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+              <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+              <span><strong>Tags: </strong></span>
+                {{ #each tag in this.videoalltags }}
+                  <span class="label label-info">{{tag}}</span>
+                {{ /each }}
+            </center>
+            <br>
+          {{ /if }}
+        {{ /each }}
+
         <center>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/m_5g_D_iP2s" frameborder="0" allowfullscreen></iframe>
           <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
