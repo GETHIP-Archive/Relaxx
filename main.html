@@ -1,0 +1,654 @@
+<head>
+  <title>Relaxx</title>
+  <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
+
+<body>
+  {{> navbar}}
+</body>
+
+  <template name="navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" id="relaxxtitle"><i>Relaxx</i></a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+              <li class><a href="/home">Home</a></li>
+              <li class><a href="/music">Music</a></li>
+              <li class><a href="/videos">Videos</a></li>
+              <li class><a href="/games">Games</a></li>
+            </ul>
+            <form id="newTimer" class="navbar-form navbar-right input-group-sm">
+              <div class="form-group">
+                <input type="number" class="form-control" id="time" placeholder="(secs)">
+                <button type="submit" class="btn btn-default">Start</button>
+              </div>
+            </form>
+            <div id="timerbox" class="nav navbar-nav navbar-right">
+              {{#if currentUser}}
+                <li class id="currentUsername"><a href="/profile">{{currentusername}}</a></li>
+                <li><a href="#" class="logout">Logout</a></li>
+              {{else}}
+                <!--  <li class><a href="/register">Register</a></li>  -->
+                <li class><a href="/login">Login</a></li>
+              {{/if}}
+              <li class>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <a id="timerdisplay" class="navbar-brand"><big>{{times}}</big></a>
+            </div>
+            <!--
+            <div>
+              <button id="testingButton">Open Modal</button>
+              <div id="timesUpBox" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>Your time is up. Resume working</p>
+                </div>
+              </div>
+            </div>
+            -->
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+  </template>
+
+<template name="relaxx">
+  <div class="container" id="relaxxContainer">
+    <!--
+    <ul>
+      <li><a href="{{pathFor route='home'}}">Home</a></li>
+      {{#if currentUser}}
+        <li><a href="#" class="logout">Logout</a></li>
+      {{else}}
+        <li><a href="{{pathFor route='register'}}">Register</a></li>
+        <li><a href="{{pathFor route='login'}}">Login</a></li>
+      {{/if}}
+    </ul>
+    -->
+  </div>
+</template>
+
+<template name="carousel">
+
+<div id="carousel">
+<div>Welcome to Relaxx!</div>
+<div>Relaxx, Refresh, Revive</div>
+<div>Time to sit down and Relaxx</div>
+</div>
+</template>
+
+
+<template name="register">
+  <div class="container" id="registerContainer">
+    <h2><center>Register</center></h2>
+    &nbsp;&nbsp;
+    <form class="register">
+      <p><input type="username" placeholder="Username" class="form-control" name="username"></p>
+      <p><input type="password" placeholder="Password" class="form-control" name="password"></p>&nbsp;&nbsp;
+      <p><input type="submit" value="Register" class="btn btn-info btn-primary btn-block"><p class="inline-p" id="errorfound"></p></p>
+      <a href="/login"><center>Login</center></a>
+    </form>
+  </div>
+</template>
+
+<template name="login">
+  <div class="container" id="loginContainer">
+    <h2><center>Login</center></h2>
+    &nbsp;&nbsp;
+    <form class="login">
+      <p><input type="username" placeholder="Username" class="form-control" name="username"><p class="inline-p" id="errorusername"></p></p>
+      <p><input type="password" placeholder="Password" class="form-control" name="password"><p class="inline-p" id="errorpassword"></p></p>&nbsp;&nbsp;
+      <p><input type="submit" class="btn btn-info btn-primary btn-block" value="Login"><p class="inline-p" id="errorfound"></p></p>
+      <a href="/register"><center>Register</center></a>
+    </form>
+  </div>
+</template>
+
+<template name="profile">
+  <div class="container" id="profileContainer">
+    {{#if currentUser}}
+      <center>
+        <h2 id="userwelcomemessage">{{welcomemessage}}</h2>
+      </center>
+	  	<center>
+		<img class="img-circle" src ="{{user.profile.pictureurl}}"/>
+	</center><br>
+	  <br>
+	  <center>
+
+	  <div class="btn-group" data-toggle="buttons-checkbox">
+    <a class="btn collapse-data-btn" data-toggle="collapse" href="#details">Edit Profile</a>
+</div>
+<div id="details" class="collapse">
+    <form id="profileChange">
+		  First name:<br>
+	  <input type = "text" name="firstname" id="firstName" value="{{user.profile.firstName}}"><br>
+		Last name:<br>
+		  <input type ="text" name="lastname" id ="lastName" value="{{user.profile.lastName}}"><br>
+		  Description of Yourself:<br>
+		  <input type="text" name="personaldesc" id="perDesc" value="{{user.profile.perDesc}}"><br>
+		Profile Picture(Image Address, 200x200 is Recommended):<br>
+		  <input type="text" name="pictureurl" id="pictureurl" value="{{user.profile.pictureurl}}"><br><br>
+
+		  <input type ="submit" value="Apply Changes">
+	  </form>
+</div>
+	  </center>
+    {{else}}
+      <center>
+        <a style="font-size: 40px" href="/login"><i>Login</i></a>
+      </center>
+    {{/if}}
+  </div>
+
+</template>
+
+<template name="home">
+  <div class="homecontainer container" id="homeContainer">
+    <div id="homeImage">
+        {{> carousel}}
+    </div>
+    <br>
+    <div class= "row">
+      <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Featured Music</h3>
+      </div>
+      <div class="panel-body">
+        <iframe width="217.7" height="122.5" src="https://www.youtube.com/embed/RB-RcX5DS5A" frameborder="0" allowfullscreen></iframe>
+        <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>
+        <span class="smalllabel"><strong>Tags: </strong></span>
+          <span class="label label-info smalllabel">Coldplay</span>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Featured Videos</h3>
+      </div>
+      <div class="panel-body">
+       <iframe width="217.7" height="122.5" src="https://www.youtube.com/embed/r3fE6FQT82s" frameborder="0" allowfullscreen></iframe>
+        <!--  <h3 class="media-heading">{{video.videoName}} <small>{{video.videoLength}}</small></h3>  --><br>
+        <span class="smalllabel"><strong>Tags: </strong></span>
+           <span class="label label-info smalllabel">Nature</span>
+           <span class="label label-info smalllabel">Timelapse</span>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Featured Games</h3>
+      </div>
+      <div class="panel-body">
+        <embed width="196" height="145.6" base="http://external.kongregate-games.com/gamez/0015/0741/live/" src="http://external.kongregate-games.com/gamez/0015/0741/live/embeddable_150741.swf" type="application/x-shockwave-flash">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</template>
+
+<template name ="eachgame">
+  <div class="container" id="eachgamecontainer">
+    <center>
+      <h3>{{eachgame.gameName}}</h3>
+      {{{eachgame.gameLink}}}
+    </center>
+    <center>
+      <span style="font-size: 25px"><strong>Tags: </strong></span>
+        {{ #each tag in eachgame.gamealltags }}
+          <span class="label label-info" style="font-size: 18px">{{tag}}</span>
+        {{ /each }}
+    </center>
+  </div>
+</template>
+
+<template name="games">
+  <div class="container" id="gamesContainer">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          {{ #each games }}
+          <div class="col-sm-6 margingames">
+            <a href="game/{{this._id}}">
+              <img src="{{this.gamePic}}" name="gamepic" width="187.5" height="150" class="gamepic">
+            </a>
+            <div class="inline-pp">
+              <a href="game/{{this._id}}">
+                <h3 style="margin-top: 0px">{{this.gameName}}</h3>
+              </a>
+              <span style="font-size: 20px"><strong>Tags: </strong></span>
+                {{ #each tag in this.gamealltags }}
+                  <span class="label label-info" style="font-size: 15px">{{tag}}</span>
+                {{ /each }}
+            </div>
+            <br>
+            <br>
+          </div>
+          {{ /each }}
+        </div>
+        <br>
+
+        <form id="addGame">
+          <div class="form-group">
+            <label for="gameLink">Link (full embedded link)</label>
+            <input type="text" class="form-control" id="gameLink" placeholder='<embed width="700" height="520" base="http://external.kongregate-games.com/gamez/0015/0741/live/" src="http://external.kongregate-games.com/gamez/0015/0741/live/embeddable_150741.swf" type="application/x-shockwave-flash">'>
+          </div>
+          <div class="form-group">
+            <label for="gameName">Name</label>
+            <input type="text" class="form-control" id="gameName" placeholder="Ninja Painter 2">
+          </div>
+          <div class="form-group">
+            <label for="gamePic">Screenshot (Linked)(Optional)</label>
+            <input type="text" class="form-control" id="gamePic" placeholder="https://cdn2.kongcdn.com/game_icons/0039/8195/np2-250-200-2.png">
+          </div>
+          <div class="form-group">
+            <label for="gametags">Tags (Seperated by commas and spaces)</label>
+            <input type="text" class="form-control" id="gametags" placeholder="Puzzle, Minigame">
+          </div>
+          <button type="submit" class="btn btn-info btn-primary">Post Game</button>
+        </form>
+
+        <h3><strong>Comments:</strong></h3>
+        <p id="gamenames"><strong>{{gamenames}}</strong></p>
+        <p id="gamecomments">{{gamecomments}}</p>
+        <h3>Leave a comment</h3>
+        <form id="gameaddComment">
+          <div class="form-group">
+            <label for="gamename">Name</label>
+            <input type="text" class="form-control" id="gamename" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="gamecomment">Comment</label>
+            <input type="text" class="form-control" id="gamecomment" placeholder="Comment">
+          </div>
+          <button type="submit" class="btn btn-default">Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="searchmusic">
+  <div class="container" id="musicContainer">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <center>
+            <form id="searchtag">
+              {{clearuniquetags}}
+
+              {{ #each musics }}
+                {{ #each tag in this.musicalltags }}
+                  {{ #if musicuniquetags tag }}
+                    <a style="text-decoration: none" href="{{tag}}">
+                      <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                    </a>
+                  {{ /if }}
+                {{ /each }}
+              {{ /each }}
+
+              {{ #each soundclouds }}
+                {{ #each tag in this.soundcloudalltags }}
+                  {{ #if soundclouduniquetags tag }}
+                    <a style="text-decoration: none" href="{{tag}}">
+                      <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                    </a>
+                  {{ /if }}
+                {{ /each }}
+              {{ /each }}
+            </form>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 container">
+        <div class="panel panel-default">
+          <div class="panel-body">
+          <center>
+
+              {{ #each musics }}
+                {{ #if musicsearchtags this.musicalltags }}
+                  <div class="youtubemusiccontainer">
+                    <iframe class="youtubemusic" src="{{this.musicLink}}" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <h3 class="media-heading">{{this.musicName}} <small>{{this.musicLength}}</small></h3>
+                  <span><strong>Tags: </strong></span>
+                    {{ #each tag in this.musicalltags }}
+                      <span class="label label-info">{{tag}}</span>
+                    {{ /each }}
+                  <br>
+                  <br>
+                {{ /if }}
+              {{ /each }}
+
+          </center>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="container" id="SoundCloudContainer">
+            <center>
+              {{ #each soundclouds }}
+                {{ #if soundcloudsearchtags this.soundcloudalltags }}
+                  {{{ this.soundcloudLink }}}
+                  <h3 class="media-heading">{{this.soundcloudName}} <small>{{this.soundcloudLength}}</small></h3>
+                  <span><strong>Tags: </strong></span>
+                    {{ #each tag in this.soundcloudalltags }}
+                      <span class="label label-info">{{tag}}</span>
+                    {{ /each }}
+                  <br>
+                  <br>
+                {{ /if }}
+              {{ /each }}
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <form id="addMusic">
+      <div class="form-group">
+        <label for="musicLink">Link (embedded)</label>
+        <input type="text" class="form-control" id="musicLink" placeholder="https://www.youtube.com/embed/RB-RcX5DS5A">
+      </div>
+      <div class="form-group">
+        <label for="musictags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="musictags" placeholder="Coldplay, Instrumental, ~4.5 minutes">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post Music</button>
+    </form>
+    <br>
+    <br>
+    <form id="addSoundcloud">
+      <div class="form-group">
+        <label for="soundcloudLink">Link (full embedded link)</label>
+        <input type="text" class="form-control" id="soundcloudLink" placeholder='<iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>'>
+      </div>
+      <div class="form-group">
+        <label for="soundcloudtags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="soundcloudtags" placeholder="Chill, Relax, Tranquil">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post SoundCloud</button>
+    </form>
+  </div>
+</div>
+</template>
+
+<template name="music">
+<div class="container" id="musicContainer">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <form id="searchtag">
+            {{clearuniquetags}}
+
+            {{ #each musics }}
+              {{ #each tag in this.musicalltags }}
+                {{ #if musicuniquetags tag }}
+                  <a style="text-decoration: none" href="music/{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
+            {{ /each }}
+
+            {{ #each soundclouds }}
+              {{ #each tag in this.soundcloudalltags }}
+                {{ #if soundclouduniquetags tag }}
+                  <a href="{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
+            {{ /each }}
+
+          </form>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <center>
+
+          {{ #each musics }}
+            <div class="youtubemusiccontainer">
+              <iframe class="youtubemusic" src="{{this.musicLink}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <h3 class="media-heading">{{this.musicName}} <small>{{this.musicLength}}</small></h3>
+            <span><strong>Tags: </strong></span>
+              {{ #each tag in this.musicalltags }}
+                <span class="label label-info">{{tag}}</span>
+              {{ /each }}
+            <br>
+            <br>
+          {{ /each }}
+
+          </center>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="container" id="SoundCloudContainer">
+            <center>
+              {{ #each soundclouds }}
+                {{{ this.soundcloudLink }}}
+                <h3 class="media-heading">{{this.soundcloudName}} <small>{{this.soundcloudLength}}</small></h3>
+                <span><strong>Tags: </strong></span>
+                  {{ #each tag in this.soundcloudalltags }}
+                    <span class="label label-info">{{tag}}</span>
+                  {{ /each }}
+                <br>
+                <br>
+              {{ /each }}
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <form id="addMusic">
+      <div class="form-group">
+        <label for="musicLink">Link (embedded)</label>
+        <input type="text" class="form-control" id="musicLink" placeholder="https://www.youtube.com/embed/RB-RcX5DS5A">
+      </div>
+      <div class="form-group">
+        <label for="musictags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="musictags" placeholder="Coldplay, Instrumental, ~4.5 minutes">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post Music</button>
+    </form>
+    <br>
+    <br>
+    <form id="addSoundcloud">
+      <div class="form-group">
+        <label for="soundcloudLink">Link (full embedded link)</label>
+        <input type="text" class="form-control" id="soundcloudLink" placeholder='<iframe width="50%" height="315" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/238471377&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>'>
+      </div>
+      <div class="form-group">
+        <label for="soundcloudtags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="soundcloudtags" placeholder="Chill, Relax, Tranquil">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post SoundCloud</button>
+    </form>
+  </div>
+</div>
+</template>
+
+<template name="searchvideos">
+  <div class="container" id="videoContainer">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <form id="searchtag">
+            {{clearuniquetags}}
+
+            {{ #each videos }}
+              {{ #each tag in this.videoalltags }}
+                {{ #if videouniquetags tag }}
+                  <a href="{{tag}}">
+                    <button  type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
+            {{ /each }}
+          </form>
+        </center>
+
+        <br>
+
+        <div class="row">
+
+          {{ #each videos }}
+            {{ #if videosearchtags this.videoalltags }}
+              <div class="col-sm-6">
+                <center>
+                  <div class="youtubemusiccontainer">
+                    <iframe class="youtubemusic" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+                  <span><strong>Tags: </strong></span>
+                    {{ #each tag in this.videoalltags }}
+                      <span class="label label-info">{{tag}}</span>
+                    {{ /each }}
+                </center>
+                <br>
+              </div>
+            {{ /if }}
+          {{ /each }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="videos">
+  <div class="container" id="videoContainer">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <form id="searchtag">
+            {{clearuniquetags}}
+
+            {{ #each videos }}
+              {{ #each tag in this.videoalltags }}
+                {{ #if videouniquetags tag }}
+                  <a href="videos/{{tag}}">
+                    <button type="submit" class="btntag btn btn-default" id="{{tag}}">{{tag}}</button>
+                  </a>
+                {{ /if }}
+              {{ /each }}
+            {{ /each }}
+          </form>
+        </center>
+
+        <br>
+
+        <div class="row">
+
+          {{ #each videos }}
+            <div class="col-sm-6">
+              <center>
+                <div class="youtubemusiccontainer">
+                  <iframe class="youtubemusic" src="{{this.videoLink}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="media-heading">{{this.videoName}} <small>{{this.videoLength}}</small></h3>
+                <span><strong>Tags: </strong></span>
+                  {{ #each tag in this.videoalltags }}
+                    <span class="label label-info">{{tag}}</span>
+                  {{ /each }}
+              </center>
+              <br>
+            </div>
+          {{ /each }}
+
+        </div>
+<!--
+      <hr>
+      <center>
+      <br>
+      {{#each videos.comments}}
+        {{posterFullName}}: {{comment}}
+        <br>
+      {{/each}}
+    </center>
+
+    <form id="videoStats">
+      <div class="form-group">
+        <label for="videoName">Video</label>
+        <input type="text" class="form-control" id="videoName" placeholder="Relaxx-ing Video">
+      </div>
+      <div class="form-group">
+        <label for="videoLength">Length</label>
+        <input type="number" class="form-control" id="videoLength" placeholder="~10min">
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags:</label>
+        <input type="text" class="form-control" id="tags" placeholder="">
+      </div>
+    </form>
+
+
+    <span class="label label-info">{{this.alltags}}</span>
+-->
+
+    <form id="addVideo">
+      <div class="form-group">
+        <label for="videoLink">Link (embedded)</label>
+        <input type="text" class="form-control" id="videoLink" placeholder="https://www.youtube.com/embed/m_5g_D_iP2s">
+      </div>
+      <div class="form-group">
+        <label for="videotags">Tags (Seperated by commas and spaces)</label>
+        <input type="text" class="form-control" id="videotags" placeholder="Relaxx, Chill, Scenic, Nature">
+      </div>
+      <button type="submit" class="btn btn-primary btn-info">Post Video</button>
+    </form>
+
+    <h3><strong>Comments:</strong></h3>
+    <p id="videonames"><strong>{{videonames}}</strong></p>
+    <p id="videocomments">{{videocomments}}</p>
+
+    <h3>Leave a comment</h3>
+    <form id="videoaddComment">
+      <div class="form-group">
+        <label for="videoname">Name</label>
+      <input type="text" class="form-control" id="videoname" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="videocomment">Comment</label>
+      <input type="text" class="form-control" id="videocomment" placeholder="Comment">
+    </div>
+    <button type="submit" class="btn btn-default">Post</button>
+    </form>
+  </div>
+</div>
+</div>
+</template>
