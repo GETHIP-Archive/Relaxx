@@ -73,7 +73,8 @@ Template.register.events({
     var password = $('[name=password]').val();
     Accounts.createUser({
       username: username,
-      password: password
+      password: password,
+      profile: {pictureurl: "https://media0.giphy.com/media/UdwPkSRko9NpS/200_s.gif"}
     },
     function(error)
     {
@@ -110,6 +111,29 @@ Template.login.events({
     }
     })
     currentusername();
+  }
+});
+
+Template.profile.events({
+  'submit #profileChange'(event){
+    event.preventDefault();
+    var target = event.target;
+    var firstName = target.firstName.value;
+    var lastName = target.lastName.value;
+    var perDesc = target.perDesc.value;
+    var pictureurl = target.pictureurl.value;
+    Meteor.users.update({_id: Meteor.userId()}, {$set:{"profile.firstName": firstName}});
+    Meteor.users.update({_id: Meteor.userId()}, {$set:{"profile.lastName": lastName}});
+    Meteor.users.update({_id: Meteor.userId()}, {$set:{"profile.perDesc": perDesc}});
+    Meteor.users.update({_id: Meteor.userId()}, {$set:{"profile.pictureurl": pictureurl}});
+    console.log(Meteor.user());
+    window.alert("Your changes have been saved");
+  }
+});
+
+Template.profile.helpers({
+  user: function() {
+    return Meteor.user();
   }
 });
 

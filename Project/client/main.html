@@ -118,6 +118,33 @@
       <center>
         <h2 id="userwelcomemessage">{{welcomemessage}}</h2>
       </center>
+  	  <center>
+  		  <img class="img-circle" src="{{user.profile.pictureurl}}"/>
+      </center>
+      &nbsp;
+      <center>
+        <h2>{{user.profile.firstName}} {{user.profile.lastName}}</h2>
+        <p>{{user.profile.perDesc}}</p>
+  	  </center>
+      <br>
+  	  <center>
+    	  <div class="btn-group" data-toggle="buttons-checkbox">
+          <a class="btn collapse-data-btn" data-toggle="collapse" href="#details">Edit Profile</a>
+        </div>
+        <div id="details" class="collapse">
+          <form id="profileChange">
+    		    First name:<br>
+    	      <input type = "text" name="firstname" id="firstName" value="{{user.profile.firstName}}"><br>
+    		    Last name:<br>
+    		    <input type ="text" name="lastname" id ="lastName" value="{{user.profile.lastName}}"><br>
+    		    Description of Yourself:<br>
+    		    <input type="text" name="personaldesc" id="perDesc" value="{{user.profile.perDesc}}"><br>
+    		    Profile Picture(Image Address, 200x200 is Recommended):<br>
+    		    <input type="text" name="pictureurl" id="pictureurl" value="{{user.profile.pictureurl}}"><br><br>
+    		    <input type ="submit" value="Apply Changes">
+    	    </form>
+        </div>
+  	  </center>
     {{else}}
       <center>
         <a style="font-size: 40px" href="/login"><i>Login</i></a>
